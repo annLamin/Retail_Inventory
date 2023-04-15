@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HFM LTD</title>
+    <!-- ================= Favicon ================== -->
+    <!-- Standard -->
+    <!-- Styles -->
+    {% load static %}
+    <link href="{% static  'css/lib/calendar2/pignose.calendar.min.css' %}" rel="stylesheet">
+    <link href="{% static  'css/lib/data-table/buttons.bootstrap.min.css' %}" rel="stylesheet" />
+    <link href="{% static  'css/lib/chartist/chartist.min.css' %}" rel="stylesheet">
+    <link href="{% static  'css/lib/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static  'css/lib/themify-icons.css' %}" rel="stylesheet">
+    <link href="{% static  'css/lib/owl.carousel.min.css' %}" rel="stylesheet" />
+    <link href="{% static  'css/lib/owl.theme.default.min.css' %}" rel="stylesheet" />
+    <link href="{% static  'css/lib/weather-icons.css' %}" rel="stylesheet" />
+    <link href="{% static  'css/lib/menubar/sidebar.css' %}" rel="stylesheet">
+    <link href="{% static  'css/lib/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static  'css/lib/helper.css' %}" rel="stylesheet">
+    <link href="{% static  'css/style.css' %}" rel="stylesheet">
+    <style>
+      .form-control {
+	height: 40px;
+	box-shadow: none;
+	color: #969fa4;
+}
+.form-control:focus {
+	border-color:  #1976d2;
+}
+.form-control, .btn {        
+	border-radius: 3px;
+}
+.signup-form {
+	width: 100%;
+	margin: 0 auto;
+	padding: 30px 0;
+  	font-size: 15px;
+}
+.signup-form h2 {
+	color: #636363;
+	margin: 0 0 15px;
+	position: relative;
+	text-align: center;
+}
+.signup-form h2:before, .signup-form h2:after {
+	content: "";
+	height: 2px;
+	width: 30%;
+	background: #d4d4d4;
+	position: absolute;
+	top: 50%;
+	z-index: 2;
+}	
+.signup-form h2:before {
+	left: 0;
+}
+.signup-form h2:after {
+	right: 0;
+}
+.signup-form .hint-text {
+	color: #999;
+	margin-bottom: 30px;
+	text-align: center;
+}
+.signup-form form {
+	color: #999;
+	border-radius: 3px;
+	margin-bottom: 15px;
+	
+	padding: 30px;
+}
+.signup-form .form-group {
+	margin-bottom: 20px;
+}
+.signup-form input[type="checkbox"] {
+	margin-top: 3px;
+}
+.signup-form .btn {        
+	font-size: 16px;
+	font-weight: bold;		
+	min-width: 140px;
+	outline: none !important;
+}
+.signup-form .row div:first-child {
+	padding-right: 10px;
+}
+.signup-form .row div:last-child {
+	padding-left: 10px;
+}    	
+.signup-form a {
+	color: #fff;
+	text-decoration: underline;
+}
+.signup-form a:hover {
+	text-decoration: none;
+}
+.signup-form form a {
+	background: #1976d2;
+	text-decoration: none;
+}	
+.signup-form form a:hover {
+	text-decoration: underline;
+} 
+    .container{
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+@media (min-width: 1200px)
+{
+ 
+}
+.d-flex{
+  display: flex;
+  flex-direction: row;
+  background: #f6f6f6;
+  border-radius: 0 0 5px 5px;
+  padding: 25px;
+}
+.form1{
+  flex: 4;
+}
+.title{
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0, #5195A8), color-stop(100, #70EAFF));
+  background: -moz-linear-gradient(top left, #5195A8 0%, #70EAFF 100%);
+  background: -ms-linear-gradient(top left, #5195A8 0%, #70EAFF 100%);
+  background: -o-linear-gradient(top left, #5195A8 0%, #70EAFF 100%);
+  background: linear-gradient(to bottom right, #5195A8 0%, #70EAFF 100%);
+  border-radius:5px 5px 0 0 ;
+  padding: 20px;
+  color: #f6f6f6;
+}
+
+.required{
+  color: red;
+} 
+.button1{
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 30px;
+  background: green;
+  color: #fff;
+  font-size: 15px;
+  font-weight: bold;
+}
+.button1:hover{
+  cursor: pointer;
+  color: #fff;
+  background: #11302c;
+}
+.modal-confirm {		
+	color: #636363;
+	width: 400px;
+}
+.modal-confirm .modal-content {
+	padding: 20px;
+	border-radius: 5px;
+	border: none;
+	text-align: center;
+	font-size: 14px;
+}
+.modal-confirm .modal-header {
+	border-bottom: none;   
+	position: relative;
+}
+.modal-confirm h4 {
+	text-align: center;
+	font-size: 26px;
+	margin: 30px 0 -10px;
+}
+.modal-confirm .close {
+	position: absolute;
+	top: -5px;
+	right: -2px;
+}
+.modal-confirm .modal-body {
+	color: #999;
+}
+.modal-confirm .modal-footer {
+	border: none;
+	text-align: center;		
+	border-radius: 5px;
+	font-size: 13px;
+	padding: 10px 15px 25px;
+}
+.modal-confirm .modal-footer a {
+	color: #999;
+}		
+.modal-confirm .icon-box {
+	width: 80px;
+	height: 80px;
+	margin: 0 auto;
+	border-radius: 50%;
+	z-index: 9;
+	text-align: center;
+	border: 3px solid #f15e5e;
+}
+.modal-confirm .icon-box i {
+	color: #f15e5e;
+	font-size: 46px;
+	display: inline-block;
+	margin-top: 13px;
+}
+.modal-confirm .btn, .modal-confirm .btn:active {
+	color: #fff;
+	border-radius: 4px;
+	background: #60c7c1;
+	text-decoration: none;
+	transition: all 0.4s;
+	line-height: normal;
+	min-width: 120px;
+	border: none;
+	min-height: 40px;
+	border-radius: 3px;
+	margin: 0 5px;
+}
+.modal-confirm .btn-secondary {
+	background: #c1c1c1;
+}
+.modal-confirm .btn-secondary:hover, .modal-confirm .btn-secondary:focus {
+	background: #a8a8a8;
+}
+.modal-confirm .btn-danger {
+	background: #f15e5e;
+}
+.modal-confirm .btn-danger:hover, .modal-confirm .btn-danger:focus {
+	background: #ee3535;
+}
+.trigger-btn {
+	display: inline-block;
+	margin: 100px auto;
+}
+
+        .t01 td{
+      border-top : hidden!important
+     }
+     .t02, .t02 tr, .t02 th, .t02 td{
+  border: 2px solid green
+}
+
+.green{
+    color: green;
+}
+    @media print {
+    #myDivToPrint {
+        background-color: white;
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        margin: 0;
+    }
+    @page { margin: 0; }
+  body { margin: 1.6cm; }
+  
+}
+
+
+
+
+
+    </style>
+</head>
+
+<body>
+    {% load crispy_forms_tags%}
+    <div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures">
+        <div class="nano">
+            <div class="nano-content">
+                <ul>
+                        <div class="logo">
+                                <img src= "{% static 'img/logo4.jpg' %}" width="70%" height="150px" alt="" /></div>
+                        <li class="label"><a  href="/admin_home/"><i class="ti-home"></i>Home</a></li>
+                        <li>
+                            <a class="sidebar-sub-toggle">
+                                <i class="ti-shopping-cart"></i> Products
+                                <span class="sidebar-collapse-icon ti-angle-down"></span>
+                            </a>
+                            <ul>
+                                <li>
+                                    <a data-toggle="modal" data-target="#modalQuickView3">Add Product</a>
+                                </li>
+                                <li>
+                                    <a data-toggle="modal" data-target="#modalQuickView6">Add Brand</a>
+                                </li>
+                                <li>
+                                    <a href="/admin_view_products/">View Products</a>
+                                </li>
+                                <li>
+                                    <a href="/admin_view_brands/">View Brands</a>
+                                </li>
+                                
+                            </ul>
+    
+                        </li>
+                        <li>
+                            <a class="sidebar-sub-toggle">
+                                <i class="ti-money"></i> Sales
+                                <span class="sidebar-collapse-icon ti-angle-down"></span>
+                            </a>
+                            <ul>
+                                <li>
+                                    <a  href="/admin_view_mobile_sales/">View Mobile Sale</a>
+                                </li>
+                                <li>
+                                    <a  href="/admin_view_accessories_sales/">View Accessory Sale</a>
+                               
+                                </li>
+                                <li>
+                                    <a href="/admin_view_electronic_sales/">View Electronics Sale</a>
+                               
+                                </li>
+                                <li>
+                                    <a href="/admin_view_recorded_sales/">View Recorded Sale</a>
+                               
+                                </li>
+                            </ul>
+    
+                    </li>
+
+                        <li>
+                            <a class="sidebar-sub-toggle">
+                                <i class="ti-briefcase"></i> Expenses 
+                                <span class="sidebar-collapse-icon ti-angle-down"></span>
+                            </a>
+                            <ul>
+                                <!-- <li>
+                                    <a data-toggle="modal" data-target="#modalQuickView9">Salary</a>
+                                </li> -->
+                                <li>
+                                    <a href="/admin_view_salaries/">View Salary</a>
+                                </li>
+                                <li>
+                                    <a href="/admin_view_shop_expenses/">View Shop Expenditures</a>
+                                </li>
+                                <li>
+                                    <a data-toggle="modal" data-target="#modalQuickView8">Add Shop Expenditure</a>
+                                </li>
+                                <li>
+                                    <a href="/admin_view_expenses/">Cash Expenditures</a>
+                                </li> 
+                                
+                                <li>
+                                    <a data-toggle="modal" data-target="#modalQuickView5">Add Expenditure</a>
+                                </li>
+                            </ul>
+    
+                        </li>
+                        <li>
+                            <a class="sidebar-sub-toggle">
+                                <i class="ti-file"></i> Documents 
+                                <span class="sidebar-collapse-icon ti-angle-down"></span>
+                            </a>
+                            <ul>
+                                <li>
+                                    <a href="/admin_add_subject/">Add Subject</a>
+                                </li>
+                                <li>
+                                    <a href="/admin_view_subjects/">View Subjects</a>
+                                </li>
+                           
+                                <li>
+                                    <a href="/admin_add_statement/">Add Statement</a>
+                                </li>
+                                <li>
+                                    <a href="/admin_view_statements/">View Statement</a>
+                                </li>
+                           
+                                <li>
+                                <li>
+                                    <a href="/admin_add_receipt/">Add Receipt</a>
+                                </li>
+                                <li>
+                                    <a href="/admin_view_receipt/">View Receipt</a>
+                                </li>
+                           
+                                <li>
+                                    <a href="/admin_add_invoice/">Add Invoice</a>
+                                </li>
+                                <li>
+                                    <a href="/admin_view_invoice/">View Invoice</a>
+                                </li>
+                                <li>
+                                    <a href="/admin_view_savings/">View Bank Savings</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                        <a class="sidebar-sub-toggle">
+                            <i class="ti-user"></i> Users
+                            <span class="sidebar-collapse-icon ti-angle-down"></span>
+                        </a>
+                        <ul>
+                            <li>
+                                <a href="/admin_add_user/">Add User</a>
+                            </li>
+                            <li>
+                                <a href="/admin_view_users/">View User</a>
+                            </li>
+                        </ul>
+
+                    </li>
+                    <li>
+                        <a class="sidebar-sub-toggle">
+                            <i class="ti-user"></i>Staff
+                            <span class="sidebar-collapse-icon ti-angle-down"></span>
+                        </a>
+                        <ul>
+                            <li>
+                                <a href="/admin_add_aux/">Add Staff</a>
+                            </li>
+                            <li>
+                                <a href="/admin_view_aux/">View Staff</a>
+                            </li>
+                        </ul>
+
+                    </li>
+                    <li>
+                        <a class="sidebar-sub-toggle">
+                            <i class="ti-user"></i> Depositors
+                            <span class="sidebar-collapse-icon ti-angle-down"></span>
+                        </a>
+                        <ul>
+                            <li>
+                                <a data-toggle="modal" data-target="#modalQuickView2">Add Depositors</a>
+                            </li>
+                            <li>
+                                <a href="/admin_view_depositors/">View Depositors</a>
+                            </li>
+                            <li>
+                                <a href="/admin_view_cash_depositors/">View Cash Depositors</a>
+                            </li>
+                           
+                        </ul>
+                        <li>
+                            <a class="sidebar-sub-toggle">
+                                <i class="ti-user"></i> Borrower
+                                <span class="sidebar-collapse-icon ti-angle-down"></span>
+                            </a>
+                            <ul>
+                                <li>
+                                    <a data-toggle="modal" data-target="#modalQuickView4">Add Borrower</a>
+                                </li>
+                                <li>
+                                    <a href="/admin_view_borrowers/">View Borrowers</a>
+                                </li>
+                                <li>
+                                    <a href="/admin_view_cash_borrowers/">View Cash Borrowers</a>
+                                </li>
+                               
+                            </ul>
+
+                    </li>
+                    
+                    <li><a href="/admin_sales_reports/"><i class="ti-clipboard"></i> Reports </a></li>
+                    
+                    <li><a href="/admin_products_report/" ><i class="ti-clipboard"></i>Product Report </a></li>
+                   </ul>
+                
+            </div>
+        </div>
+    </div>
+   
+    <!-- Modal: modalCart -->
+   
+<!-- Modal: modalCart -->
+
+
+<!-- Modal: modalCart -->
+<div class="modal fade" id="modalQuickView2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="row">
+           <div class="col-lg-12">
+              <div class="signup-form">
+                   
+                  <form action="/admin_view_depositors/" method="post">
+                    {% csrf_token %}
+                  <h2>Create Depositor</h2>
+                  <p class="hint-text">Create Depositor account</p>
+                  <input type="hidden" name="form_type" value="formOne">
+                  <div class="form-row">
+                    <div class="col">   
+                            <div class="form-group input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                                     </div>
+                                     {{dep_form.fname}}
+                                </div> 
+                    </div> <!-- form-group end.// -->
+                    <div class="col">
+                            <div class="form-group input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                                     </div>
+                                     {{dep_form.lname}}
+                                </div> 
+                    </div> <!-- form-group end.// -->
+                </div> <!-- form-row end.// -->
+              
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-address-card"></i> </span>
+                     </div>
+                    {{dep_form.address}}
+                </div>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-pencil"></i> </span>
+                     </div>
+                     {{dep_form.description}}
+                </div> <!-- form-group// -->
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+                    </div>
+                    
+                    {{dep_form.telephone}}
+                </div> <!-- form-group// -->
+                    
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-money"></i> </span>
+                        </div>
+                        
+                        {{dep_form.balance}}
+                    </div> <!-- form-group// -->
+                                         
+                    <div class="form-group">
+                            <button type="submit" class="button1">Create</button>
+                    </div> <!-- form-group// -->      
+                      
+                  </form>
+              </div>
+                <!--Section: Live preview-->
+          
+              </div>
+              <!--Grid column-->
+          
+            </div>
+            <!--Grid row-->
+          
+           </div>
+          </div>
+        </div>
+      </div>
+<!-- Modal: modalCart -->
+<!-- Modal: modalCart -->
+<div class="modal fade" id="modalQuickView3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog modal-lg" role="document">
+  <div class="modal-content">
+    <div class="modal-body">
+      <div class="row">
+       <div class="col-lg-12">
+          <div class="signup-form">
+              <form action="/admin_view_products/" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="form_type" value="formTwo">
+              <h2>Create Product</h2>
+              <p class="hint-text">Create product to add to stock</p>
+              
+              <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-building"></i> </span>
+                </div>
+              <select class="form-control custom-select" name="category">
+                <option value="acc">Accessory</option>
+                <option value="ele">Electronic</option>
+                <option value="mob">Mobile</option>
+            </select>
+            </div>
+              <div class="form-row">
+                    <div class="col">   
+                            <div class="form-group input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="fa fa-laptop"></i> </span>
+                                     </div>
+                                    {{prod_form.name}}
+                                </div> 
+                    </div> <!-- form-group end.// -->
+                    <div class="col">
+                            <div class="form-group input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="fa fa-apple"></i> </span>
+                                     </div>
+                                     {{prod_form.brand}}
+                                    </div> 
+                    </div> <!-- form-group end.// -->
+                </div> <!-- form-row end.// -->
+              
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-pencil"></i> </span>
+                    </div>
+                    
+                    {{prod_form.desc}}
+                </div> <!-- form-group// -->
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-list-ol"></i> </span>
+                    </div>
+                    
+                    {{prod_form.total_quantity}}
+                </div> <!-- form-group// -->
+                <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-money"></i> </span>
+                        </div>
+                        
+                       {{prod_form.price}}
+                    </div> <!-- form-group// -->
+                
+                <div class="form-group">
+                        <button type="submit" class="button1">Create</button>
+                </div> <!-- form-group// -->      
+                  
+              </form>
+          </div>
+            <!--Section: Live preview-->
+      
+          </div>
+          <!--Grid column-->
+      
+        </div>
+        <!--Grid row-->
+      
+       </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modalQuickView7" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-md" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="row">
+         <div class="col-lg-12">
+            <div class="signup-form">
+                <form action="/products_detail_report/{{id}}" method="post">
+                  {% csrf_token %}
+                  <input type="hidden" name="form_type" value="formTwo">
+                <h2>Search Product</h2>
+                <p class="hint-text">Search Product Detail</p>
+                
+                <div class="form-group input-group">
+                  <div class="input-group-prepend">
+                      <span class="input-group-text"> <i class="fa fa-building"></i> </span>
+                  </div>
+                <select class="form-control custom-select" name="category">
+                  <option value="acc">Accessory</option>
+                  <option value="ele">Electronic</option>
+                  <option value="mob">Mobile</option>
+              </select>
+              </div>
+               
+                  <div class="form-group">
+                          <button type="submit" class="button1">Create</button>
+                  </div> <!-- form-group// -->      
+                    
+                </form>
+            </div>
+              <!--Section: Live preview-->
+        
+            </div>
+            <!--Grid column-->
+        
+          </div>
+          <!--Grid row-->
+        
+         </div>
+        </div>
+      </div>
+    </div>
+
+  <div class="modal fade" id="modalQuickView4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="row">
+           <div class="col-lg-12">
+              <div class="signup-form">
+                   
+                  <form action="/admin_view_borrowers/" method="post">
+                    {% csrf_token %}
+                  <h2>Create Borrower</h2>
+                  <p class="hint-text">Create Borrower account</p>
+                  <input type="hidden" name="form_type" value="formEighty">
+                  <div class="form-row">
+                    <div class="col">   
+                            <div class="form-group input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                                     </div>
+                                     {{bor_form.fname}}
+                                </div> 
+                    </div> <!-- form-group end.// -->
+                    <div class="col">
+                            <div class="form-group input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                                     </div>
+                                     {{bor_form.lname}}
+                                </div> 
+                    </div> <!-- form-group end.// -->
+                </div>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-address-card"></i> </span>
+                     </div>
+                    {{bor_form.address}}
+                </div> 
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-pencil"></i> </span>
+                     </div>
+                    {{bor_form.description}}
+                </div> 
+                <!-- form-group// -->
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+                    </div>
+                    
+                    {{bor_form.telephone}}
+                </div> <!-- form-group// -->
+                    
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-money"></i> </span>
+                        </div>
+                        
+                        {{bor_form.balance}}
+                    </div> <!-- form-group// -->
+                                         
+                    <div class="form-group">
+                            <button type="submit" class="button1">Create</button>
+                    </div> <!-- form-group// -->      
+                      
+                  </form>
+              </div>
+                <!--Section: Live preview-->
+          
+              </div>
+              <!--Grid column-->
+          
+            </div>
+            <!--Grid row-->
+          
+           </div>
+          </div>
+        </div>
+      </div>
+
+<div class="modal fade" id="modalQuickView9" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="row">
+             <div class="col-lg-12">
+                <div class="signup-form">
+                     
+                    <form action="/admin_view_salaries/" method="post">
+                      {% csrf_token %}
+                    <h2>Create Salary</h2>
+                    <p class="hint-text">Create Salary account</p>
+                    <input type="hidden" name="form_type" value="formEightyTwo">
+                  {{sal_form|crispy}}
+                     
+                                           
+                      <div class="form-group">
+                              <button type="submit" class="button1">Create</button>
+                      </div> <!-- form-group// -->      
+                        
+                    </form>
+                </div>
+                  <!--Section: Live preview-->
+            
+                </div>
+                <!--Grid column-->
+            
+              </div>
+              <!--Grid row-->
+            
+             </div>
+            </div>
+          </div>
+        </div>
+<div class="modal fade" id="modalQuickView6" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="row">
+             <div class="col-lg-12">
+                <div class="signup-form">
+                     
+                    <form action="/admin_view_brands/" method="post">
+                      {% csrf_token %}
+                    <h2>Create Brand</h2>
+                    <p class="hint-text">Create Brand</p>
+                    <input type="hidden" name="form_type" value="formSeven">
+                    
+                  <div class="form-group input-group">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text"> <i class="fa fa-address-card"></i> </span>
+                       </div>
+                      {{bra_form.name}}
+                  </div>                
+                      <div class="form-group">
+                              <button type="submit" class="button1">Create</button>
+                      </div> <!-- form-group// -->      
+                        
+                    </form>
+                </div>
+                  <!--Section: Live preview-->
+            
+                </div>
+                <!--Grid column-->
+            
+              </div>
+              
+            
+             </div>
+            </div>
+          </div>
+        </div>
+<!-- Modal: modalCart -->
+
+<div class="modal fade" id="modalQuickView5" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="row">
+           <div class="col-lg-12">
+              <div class="signup-form">
+                   
+                  <form action="/admin_view_expenses/" method="post">
+                    {% csrf_token %}
+                  <h2>Create Expenditure</h2>
+                  <p class="hint-text">Create Cash Expenditure account</p>
+                  <input type="hidden" name="form_type" value="formNine">
+                
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-address-card"></i> </span>
+                     </div>
+                    {{exp_form.category}}
+                </div>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-address-card"></i> </span>
+                     </div>
+                    {{exp_form.address}}
+                </div>  
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-pencil"></i> </span>
+                     </div>
+                    {{exp_form.description}}
+                </div> 
+                <!-- form-group// -->
+               
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-money"></i> </span>
+                        </div>
+                        
+                        {{exp_form.balance}}
+                    </div> <!-- form-group// -->
+                                         
+                    <div class="form-group">
+                            <button type="submit" class="button1">Create</button>
+                    </div> <!-- form-group// -->      
+                      
+                  </form>
+              </div>
+                <!--Section: Live preview-->
+          
+              </div>
+              <!--Grid column-->
+          
+            </div>
+            <!--Grid row-->
+          
+           </div>
+          </div>
+        </div>
+      </div>
+    <!-- /# sidebar -->
+
+    <div class="modal fade" id="modalQuickView8" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="row">
+           <div class="col-lg-12">
+              <div class="signup-form">
+                   
+                  <form action="/admin_view_shop_expenses/" method="post">
+                    {% csrf_token %}
+                  <h2>Create Expenditure</h2>
+                  <p class="hint-text">Create Shop Expenditure account</p>
+                  <input type="hidden" name="form_type" value="formTwentySix">
+                
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-address-card"></i> </span>
+                     </div>
+                    {{exp_form.category}}
+                </div>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-address-card"></i> </span>
+                     </div>
+                    {{exp_form.address}}
+                </div>  
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-pencil"></i> </span>
+                     </div>
+                    {{exp_form.description}}
+                </div> 
+                <!-- form-group// -->
+               
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-money"></i> </span>
+                        </div>
+                        
+                        {{exp_form.balance}}
+                    </div> <!-- form-group// -->
+                                         
+                    <div class="form-group">
+                            <button type="submit" class="button1">Create</button>
+                    </div> <!-- form-group// -->      
+                      
+                  </form>
+              </div>
+                <!--Section: Live preview-->
+          
+              </div>
+              <!--Grid column-->
+          
+            </div>
+            <!--Grid row-->
+          
+           </div>
+          </div>
+        </div>
+      </div>
+
+
+    <div class="header">
+        <div class="container-fluid">
+            {% if messages %}
+            {% for message in messages %}
+            <div class="row">
+                <div class="col-lg-12">
+                        <div class="alert alert-{{message.tags}} alert-dismissible fade show">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <strong>{{message}}</strong>
+                              </div>
+                </div>
+                </div>
+                {% endfor %}
+                {% endif %}
+                <div class="row">
+                <div class="col-lg-12">
+                    <div class="float-left">
+                        <div class="hamburger sidebar-toggle">
+                            <span class="line"></span>
+                            <span class="line"></span>
+                            <span class="line"></span>
+                        </div>
+                    </div>
+                    <div class="float-right">
+                            <div class="dropdown dib">
+                                    <div class="header-icon" data-toggle="dropdown">
+                                        <i class="ti-bell"></i>
+                                        <div class="drop-down dropdown-menu dropdown-menu-right">
+                                            <div class="dropdown-content-heading">
+                                                <span class="text-left">Notifications</span>
+                                            </div>
+                                            <div class="dropdown-content-body">
+                                                {% if stk %}
+                                                <ul>{% for stock in stk %}
+                                                    <li>
+                                                        <a href="#">
+                                                            <div class="notification-content">
+                                                                
+                                                                <div class="notification-heading">Product Inventory Finished</div>
+                                                                <div class="notification-text">Stock for {{stock.product.name}} ({{stock.product.get_category_display}}) is finished for {{stock.seller.fname}}</div>
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    {% endfor %}
+                                                </ul>
+                                                {% else %}
+                                                <ul>
+                                                    <li>
+                                                        No new Notification
+                                                    </li>
+                                                </ul>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                         <div class="dropdown dib">
+                            <div class="header-icon">
+                                    <a title="Logout"  style="color: red" href="/logout/">
+                                        logout <i class="fa fa-sign-out"></i>
+                                    </a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="content-wrap">
+        <div class="main">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-8 p-r-0 title-margin-right">
+                        <div class="page-header">
+                            <div class="page-title">
+                                <h1>{{user_name}}</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /# column -->
+                    <div class="col-lg-4 p-l-0 title-margin-left">
+                        
+                    </div>
+                    <!-- /# column -->
+                </div>
+                <!-- /# row -->
+                <div class="main-content">
+                        <div class="row">
+                          <div class="col-lg-12">
+                            <div class="card">
+                              <div class="card-body">
+                              <!-- jinga syntax here plssssssss  -->
+
+                              {% block content %} 
+
+                              {% endblock%}
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jquery vendor -->
+	
+    <script src="{% static  'js/lib/jquery.min.js' %}"></script>
+    <script src="{% static  'js/lib/jquery.nanoscroller.min.js' %}"></script>
+    <!-- nano scroller -->
+    <script src="{% static  'js/lib/menubar/sidebar.js' %}"></script>
+    <script src="{% static  'js/lib/preloader/pace.min.js' %}"></script>
+    <!-- sidebar -->
+
+    <script src="{% static  'js/lib/bootstrap.min.js' %}"></script>
+    <script src="{% static  'js/scripts.js' %}"></script>
+    <!-- bootstrap -->
+
+    <script src="{% static  'js/lib/calendar-2/moment.latest.min.js' %}"></script>
+    <script src="{% static  'js/lib/calendar-2/pignose.calendar.min.js' %}"></script>
+    <script src="{% static  'js/lib/calendar-2/pignose.init.js' %}"></script>
+
+
+    <script src="{% static  'js/lib/weather/jquery.simpleWeather.min.js' %}"></script>
+    <script src="{% static  'js/lib/weather/weather-init.js' %}"></script>
+    <script src="{% static  'js/lib/circle-progress/circle-progress.min.js' %}"></script>
+    <script src="{% static  'js/lib/circle-progress/circle-progress-init.js' %}"></script>
+    <script src="{% static  'js/lib/chartist/chartist.min.js' %}"></script>
+    <script src="{% static  'js/lib/sparklinechart/jquery.sparkline.min.js' %}"></script>
+    <script src="{% static  'js/lib/sparklinechart/sparkline.init.js' %}"></script>
+    <script src="{% static  'js/lib/owl-carousel/owl.carousel.min.js' %}"></script>
+    <script src="{% static  'js/lib/owl-carousel/owl.carousel-init.js' %}"></script>
+    
+    <!-- scripit init-->
+    <script src="{% static  'js/dashboard2.js' %}"></script>
+    <script src="{% static  'js/lib/data-table/datatables.min.js' %}"></script>
+    <script src="{% static  'js/lib/data-table/dataTables.buttons.min.js' %}"></script>
+    <script src="{% static  'js/lib/data-table/buttons.flash.min.js' %}"></script>
+    <script src="{% static  'js/lib/data-table/jszip.min.js' %}"></script>
+    <script src="{% static  'js/lib/data-table/pdfmake.min.js' %}"></script>
+    <script src="{% static  'js/lib/data-table/vfs_fonts.js' %}"></script>
+    <script src="{% static  'js/lib/data-table/buttons.html5.min.js' %}"></script>
+    <script src="{% static  'js/lib/data-table/buttons.print.min.js' %}"></script>
+    <script src="{% static  'js/lib/data-table/datatables-init.js' %}"></script>
+
+
+
+
+    
+    <script>
+
+    $(document).on('click', '.confirm-delete', function () {
+  $("#confirmDeleteModal").attr("caller-id", $(this).attr("id"));
+});
+
+$(document).on('click', '.confirmDeleteButtonModal', function () {
+  var caller = $("#confirmDeleteButtonModal").closest(".modal").attr("caller-id");
+//   window.location = $("/admin_view_users/");
+location.reload();
+return false;
+});
+    
+   
+
+    </script>
+
+</body>
+
+</html>

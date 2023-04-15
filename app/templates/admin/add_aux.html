@@ -1,0 +1,110 @@
+{% extends "admin/admin_layout.html" %}
+{% block content %}
+<div class="row">
+    <div class="col-lg-12">
+       <div class="signup-form">
+                  {% if add_aux.non_field_errors %}
+                  <div class="row">
+                    <div class="col-lg-12">
+                            <div class="alert alert-danger alert-dismissible fade show">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <strong>{{add_aux.non_field_errors}}</strong>
+                                  </div>
+                    </div>
+                    </div>
+                  {% endif %}
+            <form action="" method="post">
+                {% csrf_token %}
+                <h2>Create Staff</h2>
+              <p class="hint-text">Add details for Staff</p>
+            <input type="hidden" name="form_type" value="formThirteen">
+            <div class="form-row">
+                <div class="col">   
+                        <div class="form-group input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                                 </div>
+                                {{add_aux.fname}}
+                                {% if add_aux.fname.errors %}
+                                <div class="col-lg-12" style="color:red">
+                                        {{add_aux.fname.errors}}
+                                </div>
+                                {% endif %}
+                            </div> 
+                </div> <!-- form-group end.// -->
+                <div class="col">
+                        <div class="form-group input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                                 </div>
+                                 {{add_aux.lname}}
+                                 {% if add_aux.lname.errors %}
+                                <div class="col-lg-12" style="color:red">
+                                        {{add_aux.lname.errors}}
+                                </div>
+                                {% endif %}
+                            </div> 
+                </div> <!-- form-group end.// -->
+            </div> <!-- form-row end.// -->
+          
+            
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-building"></i> </span>
+                </div>
+                {{add_aux.address}}
+                 {% if add_aux.address.errors %}
+                <div class="col-lg-12" style="color:red">
+                        {{add_aux.address.errors}}
+                </div>
+                {% endif %}
+                
+            </div> <!-- form-group// -->
+            
+            <div class="form-row">
+                    <div class="col">   
+                            <div class="form-group input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+                                    </div>
+                                    {{add_aux.telephone}}
+                {% if add_aux.telephone.errors %}
+               <div class="col-lg-12" style="color:red">
+                       {{add_aux.telephone.errors}}
+               </div>
+               {% endif %}</div>
+                    </div> <!-- form-group end.// -->
+                    <div class="col">
+                            <div class="form-group input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="fa fa-money"></i> </span>
+                                    </div>
+                                    {{add_aux.salary}}
+                {% if add_aux.salary.errors %}
+               <div class="col-lg-12" style="color:red">
+                       {{add_aux.salary.errors}}
+               </div>
+               {% endif %}</div>  
+                    </div> <!-- form-group end.// -->
+                    
+                </div> <!-- form-row end.// -->
+            
+                                                
+            <div class="form-group">
+                    <button type="submit" class="button1">Create</button>
+            </div> <!-- form-group// -->      
+              
+              </form>
+       </div>
+         <!--Section: Live preview-->
+   
+       </div>
+       <!--Grid column-->
+   
+     </div>
+<!-- Modal: modalCart -->
+
+<!-- Modal: modalCart -->
+
+    </body>
+{% endblock content %}

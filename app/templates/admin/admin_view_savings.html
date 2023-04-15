@@ -1,0 +1,46 @@
+{% extends "admin/admin_layout.html" %}
+{% block content %}
+{% load mathfilters %}
+<header>
+    <h1 class="h3 display">Bank Deposit Report</h1>
+</header>
+<div class="bootstrap-data-table-panel">
+ 
+    <div class="table-responsive">
+        <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+            <thead>
+                <tr>
+
+                    <th>Date and Time</th>
+                    <th>Bank</th>
+                    <th>Description</th>
+                    <th>Amount</th>
+                   
+                </tr>
+            </thead>
+            <tbody>
+                
+                {% for sale in savings %}
+              
+               
+                   
+                        <tr>
+                            <td>{{sale.date}}</td>
+                            <td>{{sale.bank}}</td>
+                            
+                            <td>{{sale.description}}</td>
+                            <td>{{sale.amount}}</td>
+                        </tr>
+                      
+                        {% endfor %}
+                        
+                        
+                
+            
+                
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock content %}

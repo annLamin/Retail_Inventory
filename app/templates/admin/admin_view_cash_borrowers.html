@@ -1,0 +1,77 @@
+{% extends "admin/admin_layout.html" %}
+{% block content %}
+{% load humanize %}
+<div class="card-title">
+    <div class="row">
+        <div class="col-lg-6">
+          
+                <div class="card">
+                    <div class="stat-widget-six">
+                        <div class="stat-icon dib">
+                            <i class="ti-user color-info border-info"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-heading">Number of Borrowers</div>
+                            <hr>
+                            <div class="stat-text" style="text-align: center; font-size: 22px">
+                                {{no_borrowers|intcomma}} </div>
+                        </div>
+                    </div>
+                </div>
+            
+        </div>
+        <div class="col-lg-6">
+            
+                <div class="card">
+                    <div class="stat-widget-six">
+                        <div class="stat-icon dib">
+                            <i class="fa fa-money color-success border-success"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-heading">Amount Borrow</div>
+                            <hr>
+                            <div class="stat-text" style="text-align: left; font-size: 22px">D{{total_amount|intcomma}}</div>
+                        </div>
+                    </div>
+                </div>
+           
+        </div>
+    
+       
+    </div>
+    <h2>All Cash Borrowers</h2>
+    
+</div>
+<div class="">
+    <div class="table-responsive">
+        <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Full  Name</th>
+                    <th>Description</th>
+                    <th>Telephone</th>
+                    <th>Balance</th>
+                   
+                  
+                </tr>
+            </thead>
+            <tbody>
+                {% for depositor in borrower_list %}
+                <tr>
+                    <td>{{depositor.date}}</td>
+                    <td>{{depositor.fname}} {{depositor.lname}}</td>
+                    <td>{{depositor.description}}</td>
+                    <td>{{depositor.telephone}}</td>
+                    <td>{{depositor.balance}}</td>
+                    
+                   
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+    </body>
+{% endblock content %}

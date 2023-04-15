@@ -1,0 +1,86 @@
+{% extends "admin/admin_layout.html" %}
+{% block content %}
+{% load mathfilters %}
+{% load humanize %}
+<header>
+    <h1 class="h3 display">Cash Expenses Report</h1>
+</header>
+<div class="bootstrap-data-table-panel">
+    <div class="row">
+        <div class="col-lg-6">
+          
+                <div class="card">
+                    <div class="stat-widget-six">
+                        <div class="stat-icon dib">
+                            <i class="ti-user color-info border-info"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-heading">Number of Cash Sales</div>
+                            <hr>
+                            <div class="stat-text" style="text-align: center; font-size: 22px">
+                                {{no_expense|intcomma}} </div>
+                        </div>
+                    </div>
+                </div>
+            
+        </div>
+        <div class="col-lg-6">
+            
+                <div class="card">
+                    <div class="stat-widget-six">
+                        <div class="stat-icon dib">
+                            <i class="fa fa-money color-success border-success"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-heading">Amount Spend</div>
+                            <hr>
+                            <div class="stat-text" style="text-align: left; font-size: 22px">D{{total_amount|intcomma}}</div>
+                        </div>
+                    </div>
+                </div>
+           
+        </div>
+    
+       
+    </div>
+    <div class="table-responsive">
+        <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+            <thead>
+                <tr>
+
+                    <th>Date and Time</th>
+                    <th>Seller Name</th>
+                    <th>Given to </th>
+                    <th>Description</th>
+                    <th>Amount Amount</th>
+                   
+                </tr>
+            </thead>
+            <tbody>
+                
+                {% for sale in expenses %}
+              
+               
+                   
+                        <tr>
+                            <td>{{sale.date}}</td>
+                            <td>{{sale.category}}</td>
+                            <td>{{sale.reciepient}}</td>
+                            <td>{{sale.desc}}</td>
+                            
+                            <td>{{sale.amount}}</td>
+                           
+                        </tr>
+                      
+                        {% endfor %}
+                        
+                        
+                
+            
+                
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock content %}

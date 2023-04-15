@@ -1,0 +1,58 @@
+{% extends "admin/admin_layout.html" %}
+{% block content %}
+<div class="card-title">
+    <div class="row">
+        <div class="col-lg-12">
+                <a href="/admin_other_expenses/" class="btn btn-outline-danger" href="" >
+                        <i class="ti-arrow-left" aria-hidden="true"></i>&nbsp;Back</a>
+                 </div>
+       </div>
+        
+
+</div>
+<div class="row">
+    <div class="col-lg-12">
+       <div class="signup-form">
+            
+        <form action="" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="form_type" value="formTwentyFive">
+          <h2>Add Expenditure</h2>
+          <p class="hint-text">Enter details</p>
+          
+            <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                    </div>
+                    {{exp_form.reciepient}}
+                </div> <!-- form-group end.// -->
+          
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-pencil"></i> </span>
+                </div>
+                
+               {{exp_form.desc}}
+            </div> <!-- form-group// -->
+            <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-money"></i> </span>
+                    </div>
+                    
+                   {{exp_form.amount}}
+                </div> <!-- form-group// -->
+            
+            <div class="form-group">
+                    <button type="submit" class="button1">Create</button>
+            </div> <!-- form-group// -->      
+              
+          </form>
+       </div>
+         <!--Section: Live preview-->
+   
+       </div>
+       <!--Grid column-->
+   
+     </div>
+    </body>
+{% endblock content %}

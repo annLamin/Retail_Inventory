@@ -1,0 +1,562 @@
+{% extends "admin/admin_layout.html" %}
+{% block content %}
+{% load mathfilters %}
+{% load humanize %}
+<div class="row">
+    <div class="col-lg-3">
+        <a href="/admin_sales_reports/">
+            <div class="card">
+                <div class="stat-widget-six">
+                    <div class="stat-icon dib">
+                        <i class="ti-shopping-cart-full color-info border-info"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-heading">Sales</div>
+                        <hr>
+                        <div class="stat-text" style="text-align: left; font-size: 22px">
+                            D{{actual_total_sales|intcomma}}</div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-lg-3">
+        <a href="/admin_cash_athand/">
+            <div class="card">
+                <div class="stat-widget-six">
+                    <div class="stat-icon dib">
+                        <i class="fa fa-money color-success border-success"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-heading">Cash at hand</div>
+                        <hr>
+                        <div class="stat-text" style="text-align: left; font-size: 22px">D{{all_total_amount_today|intcomma}}</div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-lg-3">
+        <a href="/admin_view_shop_expenses/">
+            <div class="card">
+                <div class="stat-widget-six">
+                    <div class="stat-icon dib">
+                        <i class="fa fa-money color-danger border-danger"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-heading">Expenses</div>
+                        <hr>
+                        <div class="stat-text" style="text-align: left; font-size: 22px">D{{total_exp|intcomma}}</div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-lg-3">
+
+        <div class="card">
+            <div class="stat-widget-six">
+                <div class="stat-icon dib">
+                    <i class="fa fa-money color-success border-success"></i>
+                </div>
+                <div class="stat-content">
+                    <div class="stat-heading">Current Balance</div>
+                    <hr>
+                    <div class="stat-text" style="text-align: left; font-size: 22px">D{{total_balance|intcomma}}</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+   
+</div>
+<div class="row">
+    <div class="col-lg-3">
+        <a href="/admin_creditor_reports/">
+            <div class="card">
+                <div class="stat-widget-six">
+                    <div class="stat-icon dib">
+                        <i class="fa fa-money bg-danger border-danger"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-heading color-danger">Creditors</div>
+                        <hr>
+                        <div class="stat-text color-danger" style="text-align: left; font-size: 17px">Total Creditors:
+                            {{cre_amount}}</div>
+                        <div class="stat-text color-danger" style="text-align: left; font-size: 17px">Amount:
+                            D{{cre_bal|intcomma}}</div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-lg-3">
+        <a href="/admin_view_depositors/">
+            <div class="card">
+                <div class="stat-widget-six">
+                    <div class="stat-icon dib">
+                        <i class="fa fa-money bg-success border-success"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-heading color-success" style="text-align: left">Depositors</div>
+                        <hr>
+                        <div class="stat-text color-success" style="text-align: left; font-size: 17px">Total Depositors:
+                            {{dep_amount}}</div>
+                        <div class="stat-text color-success" style="text-align: left; font-size: 17px">Amount:
+                            D{{dep_bal|intcomma}}</div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-lg-3">
+        <a href="/admin_view_borrowers/">
+            <div class="card">
+                <div class="stat-widget-six">
+                    <div class="stat-icon dib">
+                        <i class="fa fa-money bg-danger border-danger"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-heading color-danger" style="text-align: left">Borrowers</div>
+                        <hr>
+                        <div class="stat-text color-success" style="text-align: left; font-size: 17px">Total Borrowers
+                            {{bor_amount}}</div>
+                        <div class="stat-text color-success" style="text-align: left; font-size: 17px">Amount:
+                            D{{bor_bal|intcomma}}</div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-lg-3">
+        <a href="/admin_view_stock/">
+            <div class="card">
+                <div class="stat-widget-six">
+                    <div class="stat-icon dib">
+                        <i class="fa fa-money bg-info border-danger"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="stat-heading color-info" style="text-align: left">Stock</div>
+                        <hr>
+                        <div class="stat-text color-info" style="text-align: left; font-size: 17px"> Total Stock {{total_stock|intcomma}}
+                           </div>
+                        <div class="stat-text color-info" style="text-align: left; font-size: 17px">
+                            Amount {{stock_amount|intcomma}}</div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <a href="/admin_view_products/">
+            <div class="card">
+                <div class="stat-widget-five">
+                    <div class="stat-icon bg-warning">
+                        <i class="fa fa-hourglass"></i>
+                    </div>
+                    <div class="stat-content" style="text-align: left">
+                        <div class="stat-heading color-warning" style="text-align: left">Inventory</div>
+                        <hr>
+                        <div class="stat-text color-warning" style="text-align: left; font-size: 17px">Mobile:
+                            {{mob_amount}} | Total Price: D{{t_mob|intcomma}}</div>
+                        <div class="stat-text color-warning" style="text-align: left; font-size: 17px">Electronics:
+                            {{ele_amount}} | Total Price: D{{t_ele|intcomma}}</div>
+                        <div class="stat-text color-warning" style="text-align: left; font-size: 17px">Accessories:
+                            {{acc_amount}} | Total Price: D{{t_acc|intcomma}}</div>
+                        <div> </div>
+                        <div class="stat-text color-warning" style="text-align: left; font-size: 17px">Total Amount in
+                            Inventory: D{{t_eve|intcomma}}</div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-lg-6">
+        <a href="/admin_view_users/">
+            <div class="card">
+                <div class="stat-widget-five">
+                    <div class="stat-icon">
+                        <i class="fa fa-users bg-info"></i>
+                    </div>
+                    <div class="stat-content" style="text-align: left">
+                        <div class="stat-heading color-info" style="text-align: left">Users</div>
+                        <hr>
+                        <div class="stat-text color-info" style="text-align: left; font-size: 17px">Admin:
+                            {{cre_amount}}</div>
+                        <div class="stat-text color-info" style="text-align: left; font-size: 17px">Cashier:
+                            {{total_accessories}}</div>
+                        <div class="stat-text color-info" style="text-align: left; font-size: 17px">Accessory:
+                            {{total_accessories}} | Mobile: {{total_mobile}} | Electronic: {{total_electronic}}</div>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-title pr">
+                <h4>Top 5 Mobile Sales</h4>
+
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table student-data-table m-t-20">
+                        <thead>
+                            <tr>
+                                <th>Seller</th>
+                                <th>Total amount</th>
+                                <th>Paid</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for mob in top_mob %}
+                            <tr>
+                                <td>{{mob.seller.fname}} {{mob.seller.lname}}</td>
+                                <td>{{mob.total_price|intcomma}}</td>
+                                <td>{{mob.total_amount_paid|intcomma}}</td>
+                                <td>{% if mob.total_amount_paid >= mob.total_price %}
+                                    Complete
+                                    {% else %}
+                                    Incomplete
+                                    {%endif%}
+                                </td>
+                            </tr>
+                            {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-title pr">
+                <h4>Top 5 Electronics Sales</h4>
+
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table student-data-table m-t-20">
+                        <thead>
+                            <tr>
+                                <th>Seller</th>
+                                <th>Total amount</th>
+                                <th>Paid</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for ele in top_ele %}
+                            <tr>
+                                <td>{{ele.seller.fname}} {{ele.seller.lname}}</td>
+                                <td>{{ele.total_price|intcomma}}</td>
+                                <td>{{ele.total_amount_paid|intcomma}}</td>
+                                <td>{% if ele.total_amount_paid >= ele.total_price %}
+                                    Complete
+                                    {% else %}
+                                    Incomplete
+                                    {%endif%}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /# column -->
+</div>
+<div class="row">
+
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-title pr">
+                <h4>Top 5 Accessories Sales</h4>
+
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table student-data-table m-t-20">
+                        <thead>
+                            <tr>
+                                <th>Seller</th>
+                                <th>Total amount</th>
+                                <th>Paid</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for acc in top_acc %}
+                            <tr>
+                                <td>{{acc.seller.fname}} {{acc.seller.lname}}</td>
+                                <td>{{acc.total_price|intcomma}}</td>
+                                <td>{{acc.total_amount_paid|intcomma}}</td>
+                                <td>{% if acc.total_amount_paid >= acc.total_price %}
+                                    Complete
+                                    {% else %}
+                                    Incomplete
+                                    {%endif%}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-title pr">
+                <h4>Top 5 Depositors</h4>
+
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table student-data-table m-t-20">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Telephone</th>
+                                <th>Address</th>
+                                <th>Balance</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for dep in top_dep %}
+                            <tr>
+                                <td>{{dep.fname}} {{dep.lname}}</td>
+                                <td>{{dep.telephone}}</td>
+                                <td>{{dep.address}}</td>
+                                <td>{{dep.balance|intcomma}}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /# column -->
+
+</div>
+<header>
+
+
+    <h1 class="h3 display">All Sales (Today - {{date}}) </h1>
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="card">
+                <div class="stat-widget-one">
+                    <div class="stat-icon dib"><i class="fa fa-list color-success border-success"></i>
+                    </div>
+                    <div class="stat-content dib">
+                        <div class="stat-text">Number of Sales</div>
+                        <div class="stat-digit">{{num_today_sale|intcomma}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="card">
+                <div class="stat-widget-one">
+                    <div class="stat-icon dib"><i class="fa fa-money color-success border-success"></i>
+                    </div>
+                    <div class="stat-content dib">
+                        <div class="stat-text">Total Sale Amount</div>
+                        <div class="stat-digit">{{total_today_sale|intcomma}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3">
+            <div class="card">
+                <div class="stat-widget-one">
+                    <div class="stat-icon dib"><i class="fa fa-money color-success border-success"></i>
+                    </div>
+                    <div class="stat-content dib">
+                        <div class="stat-text">Profit</div>
+                        <div class="stat-digit">{{today_total_profit|intcomma}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="card">
+                <div class="stat-widget-one">
+                    <div class="stat-icon dib"><i class="fa fa-money color-success border-success"></i>
+                    </div>
+                    <div class="stat-content dib">
+                        <div class="stat-text">Total Amount Paid</div>
+                        <div class="stat-digit">{{total_amount_today|intcomma}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</header>
+<div class="bootstrap-data-table-panel">
+
+    <div class="table-responsive">
+
+        <table id="bootstrap-data-table-export" class="sale_table table table-striped table-bordered">
+
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Seller</th>
+                    <th>Customer Name</th>
+                    <th>Total Price</th>
+                    <th>Amount Paid</th>
+                    <th>Profit</th>
+                    <th>Payment Status</th>
+
+                    <th style="text-align: center">Products Bought</th>
+                    <th style="text-align: center">Reciept</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for sale in today_sales %}
+                <tr>
+                    <td>{{sale.date}}</td>
+                    <td>{{sale.seller.fname}} {{sale.seller.lname}}</td>
+                    <td>{{sale.cust_name}}</td>
+                    <td>{{sale.total_price|intcomma}}</td>
+                    <td>{{sale.total_amount_paid|intcomma}}</td>
+                    <td>{{sale.total_price |sub:sale.actual_total_price |intcomma}}</td>
+                    <td>{% if sale.total_amount_paid >= sale.total_price %}
+                        Complete
+                        {% else %}
+                        Incomplete
+                        {%endif%}
+                    </td>
+
+                    <td style="font-size: 20px;text-align: center">
+
+                        <a href="/admin_view_sale_product/{{sale.id}}/" style="color:#11302c">
+                            <i class="fa fa-eye" aria-hidden="true"></i>
+                        </a>
+                    </td>
+                    <td style="font-size: 20px;text-align: center">
+
+                        <a href="/admin_sale_payments/{{sale.id}}/" style="color:#11302c">
+                            <i class="fa fa-money" aria-hidden="true"></i>
+                        </a>
+                    </td>
+
+                </tr>
+                {% endfor %}
+
+
+            </tbody>
+
+
+        </table>
+    </div>
+</div>
+
+
+
+<header>
+
+
+    <h1 class="h3 display">All Creditors (Today - {{date}}) </h1>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="stat-widget-one">
+                    <div class="stat-icon dib"><i class="fa fa-list color-success border-success"></i>
+                    </div>
+                    <div class="stat-content dib">
+                        <div class="stat-text">Number of Creditors</div>
+                        <div class="stat-digit">{{num_today_cred|intcomma}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-5">
+            <div class="card">
+                <div class="stat-widget-one">
+                    <div class="stat-icon dib"><i class="fa fa-money color-success border-success"></i>
+                    </div>
+                    <div class="stat-content dib">
+                        <div class="stat-text">Total Credit Amount</div>
+                        <div class="stat-digit">D {{today_cre_bal|intcomma}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+</header>
+<div class="bootstrap-data-table-panel">
+    <div class="table-responsive">
+        <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+            <thead>
+                <tr>
+
+                    <th>Date and Time</th>
+                    <th>Seller Name</th>
+                    <th>Customer Name</th>
+                    <th>Total Price</th>
+                    <th>Amount Paid</th>
+                    <th>Balance</th>
+                    <th style="text-align: center">Products bought</th>
+                    <th>Payment</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for sale in today_sales %}
+
+                {% if sale.total_amount_paid < sale.total_price %} <tr>
+                    <td>{{sale.date}}</td>
+                    <td>{{sale.seller.fname}} {{sale.seller.lname}}</td>
+                    <td>{{sale.cust_name}}</td>
+                    <td>{{sale.total_price}}</td>
+                    <td>{{sale.total_amount_paid}}</td>
+
+                    <td>{{sale.total_price |sub:sale.total_amount_paid }}</td>
+                    <td style="font-size: 20px;text-align: center">
+
+                        <a href="/admin_view_creditor_product/{{sale.id}}/" style="color:#11302c">
+                            <i class="fa fa-eye" aria-hidden="true"></i>
+                        </a>
+                    </td>
+                    <td style="font-size: 20px;text-align: center">
+                        <a href="/admin_sale_payments/{{sale.id}}/" style="color:#11302c">
+                            <i class="fa fa-money" aria-hidden="true"></i>
+                        </a>
+                    </td>
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+
+
+
+
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock content %}

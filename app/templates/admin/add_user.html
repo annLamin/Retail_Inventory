@@ -1,0 +1,141 @@
+{% extends "admin/admin_layout.html" %}
+{% block content %}
+<div class="row">
+    <div class="col-lg-12">
+       <div class="signup-form">
+                  {% if reg_form.non_field_errors %}
+                  <div class="row">
+                    <div class="col-lg-12">
+                            <div class="alert alert-{{message.tags}} alert-dismissible fade show">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <strong>{{reg_form.non_field_errors}}</strong>
+                                  </div>
+                    </div>
+                    </div>
+                  {% endif %}
+            <form action="" method="post">
+                {% csrf_token %}
+                <h2>Create User</h2>
+              <p class="hint-text">Create User account</p>
+            <input type="hidden" name="form_type" value="formThree">
+            <div class="form-row">
+                <div class="col">   
+                        <div class="form-group input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                                 </div>
+                                 {{reg_form.fname}}
+                                        {% if reg_form.fname.errors %}
+                                        <div class="col-lg-12" style="color:red">
+                                                {{reg_form.fname.errors}}
+                                        </div>
+                                        {% endif %}
+                            </div> 
+                </div> <!-- form-group end.// -->
+                <div class="col">
+                        <div class="form-group input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                                 </div>
+                                 {{reg_form.lname}}
+                                 {% if reg_form.lname.errors %}
+                                 <div class="col-lg-12" style="color:red">
+                                         {{reg_form.lname.errors}}
+                                 </div>
+                                 {% endif %}
+                                
+                            </div> 
+                </div> <!-- form-group end.// -->
+            </div> <!-- form-row end.// -->
+          
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                 </div>
+                 {{reg_form.email}}
+                
+                 {% if reg_form.email.errors %}
+                 <div class="col-lg-12" style="color:red">
+                         {{reg_form.email.errors}}
+                 </div>
+                 {% endif %}
+                
+            </div> <!-- form-group// -->
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+                </div>
+                {{reg_form.telephone}}
+                {% if reg_form.telephone.errors %}
+                <div class="col-lg-12" style="color:red">
+                        {{reg_form.telephone.errors}}
+                </div>
+                {% endif %}
+            </div> <!-- form-group// -->
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-building"></i> </span>
+                </div>
+                <select class="form-control custom-select" name="user_type">
+                    <option value="mob">Mobile Seller</option>
+                    <option value="ele">Electronic Seller</option>
+                    <option value="acc">Accessories Seller</option>
+                    <option value="adm">Admin</option>
+                    <option value="cas">Cashier</option>
+                    <option value="cash">Cash</option>
+                </select>
+            </div> <!-- form-group end.// -->
+            <div class="form-row">
+                    <div class="col">   
+                            <div class="form-group input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                                    </div>
+                                    <input class="form-control" name="password1" placeholder="Create password" type="password" required>
+                                    
+                                    
+                                </div>
+                    </div> <!-- form-group end.// -->
+                    <div class="col">
+                            <div class="form-group input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                                    </div>
+                                    <input class="form-control" name="password2" placeholder="Repeat password" type="password" required>
+                                    
+                                </div>  
+                    </div> <!-- form-group end.// -->
+                    {% if reg_form.password1.errors %}
+                <div class="col-lg-12" style="color:red">
+                        {{reg_form.password1.errors}}
+                </div>
+                {% endif %}
+                    {% if reg_form.password2.errors %}
+                <div class="col-lg-12" style="color:red">
+                        {{reg_form.password2.errors}}
+                </div>
+                {% endif %}
+                    
+                </div> <!-- form-row end.// -->
+            
+                                                
+            <div class="form-group">
+                    <button type="submit" class="button1">Create</button>
+            </div> <!-- form-group// -->      
+                                            
+                    
+                  
+              </form>
+       </div>
+         <!--Section: Live preview-->
+   
+       </div>
+       <!--Grid column-->
+   
+     </div>
+<!-- Modal: modalCart -->
+
+<!-- Modal: modalCart -->
+
+    </body>
+{% endblock content %}

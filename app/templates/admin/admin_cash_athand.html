@@ -1,0 +1,164 @@
+{% extends "admin/admin_layout.html" %}
+{% block content %}
+{% load mathfilters %}
+{% load humanize %}
+
+<div class="bootstrap-data-table-panel">    
+<div class="row">
+    <div class="col-lg-5">
+        <div class="card">
+            <a href="/admin_sales_today/">
+            <div class="stat-widget-one" >
+                <div class="stat-icon dib"><i class="fa fa-list color-warning border-warning"></i>
+                </div>
+                <div class="stat-content dib" >
+                    <div class="stat-text">Number of Sales Today is: {{t_sale_no}}</div>
+                    <div class="stat-digit">Amount: {{t_sale_amount|intcomma}}</div>
+                </div>
+            </div>
+        </a>
+        </div>
+    </div>
+    <div class="col-lg-7">
+        <div class="card">
+            <a href="/admin_sales_reports/">
+            <div class="stat-widget-one" >
+                <div class="stat-icon dib"><i class="fa fa-money color-success border-success"></i>
+                </div>
+                <div class="stat-content dib" >
+                    <div class="stat-text">Total Number of sale is: {{sale_no}}</div>
+                    <div class="stat-digit">Total Amount: {{sale_amount|intcomma}}</div>
+                </div>
+            </div>
+            </a>
+        </div>
+    </div>
+   
+</div>     
+<div class="row">
+    <div class="col-lg-5">
+        <div class="card">
+            <a href="/admin_depositors_today/">
+            <div class="stat-widget-one" >
+                <div class="stat-icon dib"><i class="fa fa-list color-warning border-waining"></i>
+                </div>
+                <div class="stat-content dib" >
+                    <div class="stat-text">Number of deposit Today is: {{t_dep_no}}</div>
+                    <div class="stat-digit">Amount: {{t_dep_amount|intcomma}}</div>
+                </div>
+            </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-7">
+        <div class="card">
+            <a href="/admin_view_depositors/">
+            <div class="stat-widget-one" >
+                <div class="stat-icon dib"><i class="fa fa-money color-success border-success"></i>
+                </div>
+                <div class="stat-content dib" >
+                    <div class="stat-text">Total Number of deposit is: {{dep_no}}</div>
+                    <div class="stat-digit">Total Amount: {{dep_amount|intcomma}}</div>
+                </div>
+            </div>
+            </a>
+        </div>
+    </div>
+   
+</div>     
+<div class="row">
+    <div class="col-lg-5">
+        
+        <div class="card">
+            <a href="/admin_borrowers_today/">
+            <div class="stat-widget-one" >
+                <div class="stat-icon dib"><i class="fa fa-list color-danger border-danger"></i>
+                </div>
+                <div class="stat-content dib" >
+                    <div class="stat-text">Number of Borrowers Today is: {{t_bor_no}}</div>
+                    <div class="stat-digit">Amount: {{t_bor_amount|intcomma}}</div>
+                </div>
+            </div>
+        </a>
+        </div>
+    </div>
+    <div class="col-lg-7">
+        <div class="card">
+            <a href="/admin_view_borrowers/">
+            <div class="stat-widget-one" >
+                <div class="stat-icon dib"><i class="fa fa-money color-danger border-danger"></i>
+                </div>
+                <div class="stat-content dib" >
+                    <div class="stat-text">Total Number of Borrowers is: {{bor_no}}</div>
+                    <div class="stat-digit">Total Amount: {{bor_amount|intcomma}}</div>
+                </div>
+            </div>
+            </a>
+        </div>
+    </div>
+   
+</div>  
+<div class="row">
+    <div class="col-lg-5">
+        <div class="card">
+            <div class="stat-widget-one" >
+                <div class="stat-icon dib"><i class="fa fa-list color-danger border-danger"></i>
+                </div>
+                <div class="stat-content dib" >
+                    <div class="stat-text">Number of Expenditure Today is: {{t_exp_no}}</div>
+                    <div class="stat-digit">Amount: {{t_exp_amount|intcomma}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-7">
+        <div class="card">
+            <a href="/admin_view_shop_expenses/">
+            <div class="stat-widget-one" >
+                <div class="stat-icon dib"><i class="fa fa-money color-danger border-danger"></i>
+                </div>
+                <div class="stat-content dib" >
+                    <div class="stat-text">Total Number of Expenditure is: {{exp_no}}</div>
+                    <div class="stat-digit">Total Amount: {{exp_amount|intcomma}}</div>
+                </div>
+            </div>
+            </a>
+        </div>
+    </div>
+   
+</div> 
+<div class="row">
+    <div class="col-lg-5">
+        <div class="card">
+            <a href="/admin_creditors_today/">
+            <div class="stat-widget-one" >
+                <div class="stat-icon dib"><i class="fa fa-list color-danger border-danger"></i>
+                </div>
+                <div class="stat-content dib" >
+                    <div class="stat-text">Number of Creditors Today is: {{t_cre_amount}}</div>
+                    <div class="stat-digit">Amount: {{t_cre_bal|intcomma}}</div>
+                </div>
+            </div>
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-7">
+        <div class="card">
+            <a href="/admin_creditor_reports/">
+            <div class="stat-widget-one" >
+                <div class="stat-icon dib"><i class="fa fa-money color-danger border-danger"></i>
+                </div>
+                <div class="stat-content dib" >
+                    <div class="stat-text">Total Number of Creditor is: {{cre_amount}}</div>
+                    <div class="stat-digit">Total Amount: {{cre_bal|intcomma}}</div>
+                </div>
+            </div>
+            </a>
+        </div>
+    </div>
+   
+</div>
+</div>
+
+
+{% endblock content %}
