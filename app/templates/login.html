@@ -1,0 +1,164 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!DOCTYPE html>
+<html>
+    
+<head>
+	<title>HFM LTD</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+<style>
+    	/* Coded with love by Mutiullah Samim */
+		body,
+		html {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			background: linear-gradient(to right,black,#02305e,#1565c0, #1565c0, #1565c0,#02305e,black);
+		}
+		form{
+			text-align: center;
+			font-size: 20px;
+			width: 100%;
+			padding: 50px;
+			color: #2ecc71;
+		}
+		.user_card {
+			height: 500px;
+			width: 500px;
+			margin-top: auto;
+			margin-bottom: auto;
+			background: #02305e;
+			position: relative;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			padding: 10px;
+            border: 10px solid #2ecc71;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			border-radius: 5px;
+
+		}
+		.brand_logo_container {
+			position: absolute;
+			height: 170px;
+			width: 170px;
+			top: -75px;
+			border-radius: 50%;
+			background: #2ecc71;
+			padding: 10px;
+			text-align: center;
+		}
+		.brand_logo {
+			height: 150px;
+			width: 150px;
+			border-radius: 20%;
+			border: 2px solid #2ecc71;
+		}
+		.form_container {
+			margin-top: 40px;
+		}
+		.login_btn {
+			width: 100%;
+			margin-top: 20px;
+			background: #27af60 !important;
+			color: white !important;
+		}
+		.login_btn:focus {
+			box-shadow: none !important;
+			outline: 0px !important;
+		}
+		.login_btn:hover{
+			background: #1c7a43 !important;
+		}
+		.login_container {
+			padding: 0 2rem;
+		}
+		.input-group-text {
+			background: rgb(78, 150, 78) !important;
+			color: white !important;
+			border: 0 !important;
+			border-radius: 0.25rem 0 0 0.25rem !important;
+		}
+		.input_user,
+		.input_pass:focus {
+			box-shadow: none !important;
+			outline: 0px !important;
+		}
+		.custom-checkbox .custom-control-input:checked~.custom-control-label::before {
+			background-color: #c0392b !important;
+		}
+</style>
+
+</head>
+<body>
+	<div class="container h-100">
+		<div class="d-flex justify-content-center h-100">
+			<div class="user_card">
+				<div class="d-flex justify-content-center">
+					<div class="brand_logo_container">
+						<img src="../../static/img/logo2.jpg" class="brand_logo" alt="Logo">
+					</div>
+				</div>
+				<div class="d-flex justify-content-center form_container">
+					<form method="POST">
+							{% if message %}
+							<div class="col-lg-12">
+									<div class="alert alert-danger">
+											<strong>{{message}}</strong>
+										  </div>
+							</div>
+							{% endif %}
+							{% if login_form.non_field_errors %}
+							<div class="row">
+							  <div class="col-lg-12">
+									  <div class="alert alert-info">
+											  {% for err in  login_form.non_field_errors%}
+											  <strong>{{err}}</strong>
+											  {% endfor %}
+											</div>
+							  </div>
+							  </div>
+							{% endif %}
+						{% csrf_token %}
+						<i style="font-size: 50px" class="icon ion-ios-locked-outline"></i>
+                            <p style="color: #2ecc71"> Please enter your email and password!</p>
+						<div class="input-group mb-3">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-user"></i></span>
+							</div>
+							{{login_form.email}}
+                                 {% if login_form.email.errors %}
+                                    <div class="col-lg-12" style="color:red">
+                                {{login_form.email.errors}}
+                                </div>
+                                {% endif %}
+						</div>
+						<div class="input-group mb-2">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-key"></i></span>
+							</div>
+							{{login_form.password}}
+                                  <!-- <input type="password" name="password" placeholder="Password" required> -->
+                                  {% if login_form.password.errors %}
+                                    <div class="col-lg-12" style="color:red">
+                                {{login_form.password.errors}}
+                                </div>
+                                {% endif %}
+						</div>
+							<div class="d-flex justify-content-center mt-3 login_container">
+				 	<button type="submit" name="button" class="btn login_btn">Login</button>
+				   </div>
+					</form>
+				</div>
+		
+			</div>
+		</div>
+	</div>
+</body>
+</html>
