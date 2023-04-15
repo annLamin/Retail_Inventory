@@ -1,0 +1,93 @@
+{% extends "admin/admin_layout.html" %}
+{% block content %}
+<div class="card-title">
+    <div class="row">
+            <div class="col-lg-6">
+                    <a href="/admin_view_products/" class="btn btn-outline-danger" href="" >
+                            <i class="ti-arrow-left" aria-hidden="true"></i>&nbsp;Back</a>
+                     </div>
+                     <div class="col-lg-6" style="text-align: right">
+                        <a href="/admin_add_product_stock/{{pid}}/" class="btn btn-outline-primary" href="" >
+                                <i class="ti-import" aria-hidden="true"></i>&nbsp;Add Seller</a>
+                         </div>
+           </div>
+    
+
+</div>
+<div class="card-title">
+    <h2>Seller's inventory for ({{prod.brand}}) {{prod.name}}</h2>
+
+</div>
+<div class="bootstrap-data-table-panel">
+    <div class="table-responsive">
+        <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Seller Details</th>
+                    <th>Quantity remaining</th>
+                    <th style="text-align: center">Restock Seller's Inventory</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for seller in sel_list %}
+                <tr>
+                    <td>{{seller.seller}}</td>
+                    <td>{{seller.quantity}}</td>
+                    <td style="font-size: 20px;text-align: center"><a href="/admin_product_stock/{{pid}}/{{seller.seller.id}}/"  style="color:#02305e">
+                        <i class="ti-import" aria-hidden="true"></i></a>&nbsp;
+                      </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="modal fade" id="modalQuickView10" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="row">
+           <div class="col-lg-12">
+              <div class="signup-form">
+                  <form action="" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="form_type" value="formSix">
+                  <h2>Restock Inventory</h2>
+                  <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                        </div>
+                        {{res_form.seller}}
+                    </div> <!-- form-group end.// --> 
+                  <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-list-ol"></i> </span>
+                    </div>
+                    
+                    {{res_form.amount}}
+                </div> 
+                      
+                  <div class="form-group">
+                          <button type="submit" class="button1">Restock</button>
+                      </div>
+                  </form>
+              </div>
+                <!--Section: Live preview-->
+          
+              </div>
+              <!--Grid column-->
+          
+            </div>
+            <!--Grid row-->
+          
+           </div>
+          </div>
+        </div>
+      </div>
+<!-- Modal: modalCart -->
+
+<!-- Modal: modalCart -->
+   
+    </body>
+{% endblock content %}

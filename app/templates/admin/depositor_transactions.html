@@ -1,0 +1,149 @@
+{% extends "admin/admin_layout.html" %}
+{% block content %}
+<div class="row">
+        <div class="col-lg-6">
+            <a onclick="history.back(-1)" class="btn btn-outline-danger" href="#" >
+                <i class="ti-arrow-left" aria-hidden="true"></i>&nbsp;Back</a> </div>
+        <div class="col-lg-6" style="text-align: right">
+                <a href="/depositor_withdraw/{{dep.id}}/" class="btn btn-outline-primary" href="" >
+                        <i class="ti-export" aria-hidden="true"></i>&nbsp;Withdraw</a>
+                 </div>
+        
+    </div>
+    {% if val_set %}
+    <div class="row">
+            <div class="col-lg-8">
+                    <div class="card-title">
+                            <h2>{{val_set}}</h2>
+                        
+                        </div>
+                     </div>
+            <div class="col-lg-4"style="text-align: right">
+                    <a href="/depositor_deposit/{{dep.id}}/" class="btn btn-outline-success" href="" >
+                            <i class="ti-import" aria-hidden="true"></i>&nbsp;Deposit</a>  </div>
+        </div>
+
+<div class="row">
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="stat-widget-one" >
+                    <div class="stat-icon dib"><i class="fa fa-list color-success border-success"></i>
+                    </div>
+                    <div class="stat-content dib" >
+                        <div class="stat-text">No. of Transactions</div>
+                        <div class="stat-digit">{{total_amt}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="stat-widget-one" >
+                    <div class="stat-icon dib"><i class="fa fa-money color-success border-success"></i>
+                    </div>
+                    <div class="stat-content dib" >
+                        <div class="stat-text">Total Deposit</div>
+                        <div class="stat-digit">{{total_dep}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="stat-widget-one" >
+                    <div class="stat-icon dib"><i class="fa fa-money color-danger border-danger "></i>
+                    </div>
+                    <div class="stat-content dib" >
+                        <div class="stat-text">Total Withdrawal</div>
+                        <div class="stat-digit">{{total_wit}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% else %}
+<div class="row">
+        <div class="col-lg-8">
+                <div class="card-title">
+                        <h2>Transcations for {{dep.fname}} {{dep.lname}}</h2>
+                    
+                    </div>
+                 </div>
+        <div class="col-lg-4"style="text-align: right">
+                <a href="/depositor_deposit/{{dep.id}}/" class="btn btn-outline-success" href="" >
+                        <i class="ti-import" aria-hidden="true"></i>&nbsp;Deposit</a>  </div>
+    </div>
+{% endif %}
+
+
+
+
+<div class="bootstrap-data-table-panel">
+        <div class="row">
+                <div class="col-lg-12" style="text-align: center">
+                        <form action="" method="post">
+                                {% csrf_token %}
+                        <div class="form-row">
+                                <div class="col"> Start Date  
+                                        <div class="form-group input-group">
+                                                <a href="/admin_depositor_transactions/{{dep.id}}/" style="margin-right: 5px" class="btn btn-outline-success"><i class="ti-reload" aria-hidden="true"></i>&nbsp;All Transactions</a> 
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"> <i class="fa fa-calendar"></i> </span>
+                                                </div>
+                                                
+                                                <input required class="form-control" placeholder="Start Date" type="date" name="startdate">
+                                                
+                                            </div>
+                                </div> <!-- form-group end.// -->
+                                <div class="col"> End Date
+                                        <div class="form-group input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"> <i class="fa fa-calendar"></i> </span>
+                                                </div>
+                                                <input required class="form-control" placeholder="End Date" type="date" name="enddate">
+                                                <button style="margin-left: 5px" type="submit" class="btn btn-outline-success"><i class="fa fa-search" aria-hidden="true"></i>&nbsp;Search</button>
+                                                
+                                            </div>  
+                                            
+                                </div> <!-- form-group end.// -->
+                                
+                                
+                            </div> <!-- form-row end.// -->
+                        </form>
+                         </div>
+                
+                
+            </div>
+    <div class="table-responsive">
+        <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Action</th>
+                    <th>Amount</th>
+                    <th>Description</th>
+                    <th style="text-align: center">Reciept</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for trans in dep_trans %}
+                <tr>
+                    <td>{{trans.date}}</td>
+                    <td>{{trans.action}}</td>
+                    <td>{{trans.amount}}</td>
+                    <td>{{trans.description}}</td>
+                    <td style="font-size: 20px; text-align: center ">
+                        <a href="/depositor_reciept/{{trans.id}}/" style="color:rgb(40, 120, 185)" >
+                          <i class="ti-printer" aria-hidden="true"></i>
+                        </a>
+                      </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+     
+    
+    </body>
+{% endblock content %}

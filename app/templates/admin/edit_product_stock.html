@@ -1,0 +1,45 @@
+{% extends "admin/admin_layout.html" %}
+{% block content %}
+<div class="card-title">
+        <div class="row">
+                <div class="col-lg-12">
+                        <a href="/admin_view_products/" class="btn btn-outline-danger" href="" >
+                                <i class="ti-arrow-left" aria-hidden="true"></i>&nbsp;Back</a>
+                         </div>
+            </div>
+        
+
+</div>
+<div class="row">
+    <div class="col-lg-12">
+       <div class="signup-form">
+            
+            <form action="" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="form_type" value="formSix">
+              <h2>Restock Inventory</h2>
+              <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-list-ol"></i> </span>
+                </div>
+                
+                {{res_form.quantity}}
+            </div> 
+                  
+              <div class="form-group">
+                      <button type="submit" class="button1">Restock</button>
+                  </div>
+              </form>
+       </div>
+         <!--Section: Live preview-->
+   
+       </div>
+       <!--Grid column-->
+   
+     </div>
+<!-- Modal: modalCart -->
+
+<!-- Modal: modalCart -->
+
+    </body>
+{% endblock content %}

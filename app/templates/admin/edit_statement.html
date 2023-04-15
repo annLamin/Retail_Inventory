@@ -1,0 +1,44 @@
+{% extends "admin/admin_layout.html"%}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="app-content content">
+    <div class="content-overlay"></div>
+    <div class="content-wrapper">
+       
+        <div class="content-body">
+            <div class="row">
+              
+            </div>
+            <!-- Zero configuration table -->
+            <section id="basic-datatable">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 style="text-align: center;" class="card-title">Update Statement </h4>
+                            </div>
+                            <div class="card-body card-dashboard">
+                                
+                                <form class="form form-vertical"  method="post">
+                                    {% csrf_token %}
+                                    {{state_form|crispy}}
+                                    <div class="form-group">
+                                        <button type="submit" class="button1">Update Statement</button>
+                                </div>
+                                   
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+           
+
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

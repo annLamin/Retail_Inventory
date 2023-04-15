@@ -1,0 +1,141 @@
+{% extends "admin/admin_layout.html" %}
+{% block content %}
+<div class="card-title">
+        <div class="row">
+                <div class="col-lg-12">
+                        <a href="/admin_view_users/" class="btn btn-outline-danger" href="" >
+                                <i class="ti-arrow-left" aria-hidden="true"></i>&nbsp;Back</a>
+                         </div>
+                
+            </div>
+        
+
+</div>
+<div class="row">
+    <div class="col-lg-12">
+       <div class="signup-form">
+            
+           <form action="" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="form_type" value="formEleven">
+           <h2>Update Seller</h2>
+           <p class="hint-text">Update accounts for seller</p>
+           <div class="form-row">
+                <div class="col">   
+                        <div class="form-group input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                                 </div>
+                                {{sel_form.fname}}
+                                {% if sel_form.fname.errors %}
+                                <div class="col-lg-12" style="color:red">
+                                        {{sel_form.fname.errors}}
+                                </div>
+                                {% endif %}
+                            </div> 
+                </div> <!-- form-group end.// -->
+                <div class="col">
+                        <div class="form-group input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                                 </div>
+                                 {{sel_form.lname}}
+                                 {% if sel_form.lname.errors %}
+                                <div class="col-lg-12" style="color:red">
+                                        {{sel_form.lname.errors}}
+                                </div>
+                                {% endif %}
+                            </div> 
+                </div> <!-- form-group end.// -->
+            </div> <!-- form-row end.// -->
+          
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                 </div>
+                 {{usr_form.email}}
+                 {% if usr_form.email.errors %}
+                <div class="col-lg-12" style="color:red">
+                        {{usr_form.email.errors}}
+                </div>
+                {% endif %}
+            </div> <!-- form-group// -->
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+                </div>
+                
+                {{sel_form.telephone}}
+                {% if sel_form.telephone.errors %}
+               <div class="col-lg-12" style="color:red">
+                       {{sel_form.telephone.errors}}
+               </div>
+               {% endif %}
+            </div> <!-- form-group// -->
+            
+            <div class="form-row">
+                    <div class="col">   
+                            <div class="form-group input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                                    </div>
+                                    <input class="form-control" name="password1" placeholder="Re-enter password or create new password" type="password">
+                                </div>
+                    </div> <!-- form-group end.// -->
+                    <div class="col">
+                            <div class="form-group input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                                    </div>
+                                    <input class="form-control" name="password2" placeholder="Repeat password" type="password">
+                                </div>  
+                    </div> <!-- form-group end.// -->
+                    {% if usr_form.password1.errors %}
+               <div class="col-lg-12" style="color:red">
+                       {{usr_form.password1.errors}}
+               </div>
+               {% endif %}
+                   {% if usr_form.password2.errors %}
+               <div class="col-lg-12" style="color:red">
+                       {{usr_form.password2.errors}}
+               </div>
+               {% endif %}
+                </div> <!-- form-row end.// -->
+            
+                                                
+            <div class="form-group">
+                    <button type="submit" class="button1">Update</button>
+            </div> <!-- form-group// -->      
+               
+           </form>
+       </div>
+         <!--Section: Live preview-->
+   
+       </div>
+       <!--Grid column-->
+   
+     </div>
+<!-- Modal: modalCart -->
+
+<!-- Modal: modalCart -->
+<div id="myModal" class="modal fade">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header flex-column">
+                    <div class="icon-box">
+                        <i class="ti-close"></i>
+                    </div>						
+                    <h4 class="modal-title w-100">Are you sure?</h4>	
+                </div>
+                <div class="modal-body">
+                    <p>Do you really want to delete this user? This process cannot be undone.</p>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>     
+    </body>
+{% endblock content %}
