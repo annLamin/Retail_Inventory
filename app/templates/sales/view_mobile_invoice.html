@@ -1,0 +1,109 @@
+{% extends "sales/mobile_layout.html" %}
+ {% block content%}
+ <div class="row">
+        <div class="col-lg-12">
+                <a class="btn btn-outline-danger" href="/create_mobile_invoice/" >
+                        <i class="ti-arrow-left" aria-hidden="true"></i>&nbsp;Back</a>  </div> 
+    </div>
+    <div class="col-lg-12" id="myDivToPrint">
+            <div class="row">
+                    <div class="col-lg-12">
+                        <header>
+                            <h1 style="text-align: center;color: green" class="h2 display">HYDARA FOAM MANUFACTORING LTD</h1>
+                        </header>
+                    </div>
+                </div>
+                <div class="row">
+                    <div style="padding: 15px;display: inline-block;width:20%">
+                        <img style="color: green; width:50%;height:100%" src="../../static/img/logo3.jpg" alt="">
+                    </div>
+                    <div style="padding-right: 200px;display: inline-block;width:80%">
+                        <header>
+                            <h5 style="text-align: center;color: green" class="h5 display">HYDARA PLAZA Shop No1</h5>
+                        </header>
+                        <header>
+                            <h6 style="text-align: center;color: green" class="h6 display">Add:  Opposite Gamtel Serre Kunda Market</h6>
+                            <h6 style="text-align: center;color: green" class="h6 display">Tel:whatsapp (+220)7817221/3921795/ 9958274 </h6>
+                
+                        </header>
+                
+                    </div>
+                </div>
+                <div class="row">
+                    <div style="padding: 15px;display: inline-block;width:50%;color: green">
+                        Invoice Num: 00{{invoice_num}}
+                    </div>
+                    <div style="padding: 15px;display: inline-block;width:50% ; text-align: right;color: green">
+                       
+                        Date: {{date}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12" style="color: green">
+                        
+                        To: <strong> {{cust_name}}</strong> 
+                        
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <table class="table t02">
+                            <thead>
+                                    
+                                <tr>
+                                        <th rowspan="2" style="color: green">QTY</th>
+                                        <th rowspan="2" style="color: green">Description</th>
+                                        <th rowspan="2" style="color: green">Product Name</th>
+                                        <th rowspan="2" style="color: green">Unit Price</th>
+                                        <th colspan="2" style="color: green" style="text-align: center">Total Amount</th>
+                                </tr>
+                                <tr><th style="color: green">D</th>
+                                    <th style="color: green">B</th></tr>
+                            </thead>
+                            <tbody>
+                                    {% if select_prod %}
+                                    {% for product in select_prod.values %}
+                                    <tr>
+                                        {% for item in product %}
+                                        <td style="color: green">{{item}}</td>
+                                        {% endfor %}
+                                        <td style="color: green">00</td>
+                                    </tr>
+                                    {% endfor %}
+                                    {% else %}
+                                    <tr>
+                                    <td colspan="3" style="color: green">No products added</td>
+                                    </tr>
+                                    {% endif %}
+                                    <tr>
+                                            <td colspan="3" style="color: green; border-left : hidden!important;border-bottom : hidden!important"></td>
+                                           
+                                            <td  style="border-left : hidden!important;border-bottom : hidden!important;text-align:right;color: green"><strong>Total Price</strong></td>
+                                            <td colspan="2"  style="color: green">D {{total_price}}.00</td>
+                                        </tr>
+                            </tbody>
+                          
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12" style="color: green">
+                        Amount in words:..........................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................
+                    </div>
+                </div>
+                <div class="row">
+                    <div style="padding: 15px;display: inline-block;width:50%;color: green">
+                        Customer's Sign:.............................................................................
+                    </div>
+                    <div style="padding: 15px;display: inline-block;width:50%;color: green">
+                        Manager's Sign:................................................................................
+                    </div>
+                </div>
+                    
+             </div>
+             <div style="text-align: right">
+             <button class="btn btn-outline-primary" onclick="window.print()" >
+                    <i class="ti-printer" aria-hidden="true"></i>&nbsp;Print</button>
+                </div>
+{% endblock content %}
+

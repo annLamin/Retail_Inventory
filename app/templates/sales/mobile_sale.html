@@ -1,0 +1,184 @@
+{% extends "sales/mobile_layout.html" %}
+ {% block content%}
+ <div class="row">
+    <div class="col-lg-12">
+       <div class="signup-form">
+                  {% if mob_form.non_field_errors %}
+                  <div class="row">
+                    <div class="col-lg-12">
+                            <div class="alert alert-{{message.tags}} alert-dismissible fade show">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <strong>{{mob_form.non_field_errors}}</strong>
+                                  </div>
+                    </div>
+                    </div>
+                  {% endif %}
+                  
+                  <form action="" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="form_type" value="formEighteen"> 
+                    <h2>Select Product</h2>
+                    <div class="row">
+                  <div class="col-lg-6"><a style="color: white" class="btn" data-toggle="modal" data-target="#modalQuickView" >
+                      <i class="ti-plus" aria-hidden="true"></i>&nbsp;Click to add</a>
+                  </div>
+              <div class="col-lg-6" style="text-align: right;">
+                <a href="/del_mob_ses/" class="btn btn-danger" type="submit">
+                    <i class="ti-reload" aria-hidden="true"></i>&nbsp;Reset</a>  
+                      </div>
+                  </div>
+                      <div class="row">
+                          <div class="col-lg-12">
+                              <table class="table">
+                                <thead>
+                                          
+                                    <tr>
+                                        <th>QTY</th>
+                                        <th>Product Brand</th>
+                                        <th>Product Name</th>
+                                        <th>Unit Price</th>
+                                        <th>Total Price</th>
+                                        </tr>
+                                        
+                                </thead>
+                                <tbody>
+                                    {% if select_prod %}
+                                    {% for product in select_prod.values %}
+                                    <tr>
+                                        {% for item in product %}
+                                        <td>{{item}}</td>
+                                        {% endfor %}
+                                    </tr>
+                                    {% endfor %}
+                                    <tr>
+                                          <td colspan="4" style="text-align: right">Total Sale Price:</td>
+                                            <td>{{total_price}}</td>
+                                      </tr>
+                                    {% else %}
+                                    <tr>
+                                    <td colspan="3">No products added</td>
+                                    </tr>
+                                   
+                                    {% endif %}
+                                </tbody>
+                              </table>
+                          </div>
+                      </div>
+                <h2>Customer Details</h2>
+                <p class="hint-text">Enter Customer Details</p>
+                <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                         </div>
+                         {{mob_form.cust_name}}
+                         {% if mob_form.cust_name.errors %}
+                         <div class="col-lg-12" style="color:red">
+                                 {{mob_form.cust_name.errors}}
+                         </div>
+                         {% endif %}
+                    </div> <!-- form-group// -->
+                  <div class="form-group input-group">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text"> <i class="fa fa-address-card"></i> </span>
+                       </div>
+                       {{mob_form.cust_address}}
+                       {% if mob_form.cust_address.errors %}
+                       <div class="col-lg-12" style="color:red">
+                               {{mob_form.cust_address.errors}}
+                       </div>
+                       {% endif %}
+                  </div> <!-- form-group// -->
+                  <div class="form-group input-group">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+                      </div>
+                      {{mob_form.cust_tel}}
+                       {% if mob_form.cust_tel.errors %}
+                       <div class="col-lg-12" style="color:red">
+                               {{mob_form.cust_tel.errors}}
+                       </div>
+                       {% endif %}
+                  </div> <!-- form-group// -->
+                  
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-money"></i> </span>
+                        </div>
+                        
+                        {{mob_form.total_amount_paid}}
+                             {% if mob_form.total_amount_paid.errors %}
+                             <div class="col-lg-12" style="color:red">
+                                     {{mob_form.total_amount_paid.errors}}
+                             </div>
+                             {% endif %}
+                    </div> <!-- form-group// -->                                 
+                  <div class="form-group">
+                          <button type="submit" class="button1">Make Sale</button>
+                  </div> <!-- form-group// -->  
+                </form>
+       </div>
+         <!--Section: Live preview-->
+   
+       </div>
+       <!--Grid column-->
+   
+     </div>
+     <div class="modal fade" id="modalQuickView" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="row">
+         <div class="col-lg-12">
+            <div class="signup-form">
+                 
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="form_type" value="formThirty"> 
+                
+                  <h2>Select Product</h2>
+                <p class="hint-text">Enter product Details</p>
+                  <div class="form-group input-group">
+                      <select style="line-height: 50px;" id="select-state" class="form-control selection custom-select" name="prod">
+                            {% for product in products %}
+                            <option value="{{product.product.id}}">{{product.product.name}} ({{product.product.brand.name}})</option>
+                            {% endfor %}
+                        </select>
+                  </div> <!-- form-group end.// -->
+    
+               
+                <div class="form-group input-group">
+                  <div class="input-group-prepend">
+                      <span class="input-group-text"> <i class="fa fa-list-ol"></i> </span>
+                  </div>
+                  
+                  <input type="number" required class="form-control" name="quantity" placeholder="Quantity">
+              </div> <!-- form-group// -->
+              <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-money"></i> </span>
+                </div>
+                
+                <input type="number" required class="form-control" name="sell_price" placeholder="Selling Price">
+            </div>
+                                                      
+                  <div class="form-group">
+                          <button type="submit" class="button1">Add Product</button>
+                  </div> <!-- form-group// -->  
+                </form>
+            </div>
+              <!--Section: Live preview-->
+        
+            </div>
+            <!--Grid column-->
+        
+          </div>
+          <!--Grid row-->
+        
+         </div>
+        </div>
+      </div>
+  
+</div>
+{% endblock content %}
+

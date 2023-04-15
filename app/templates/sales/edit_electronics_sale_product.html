@@ -1,0 +1,86 @@
+
+{% extends "sales/electronics_layout.html" %}
+{% block content%}
+<div class="card-title">
+   <div class="row">
+           <div class="col-lg-12">
+                   <a href="/view_electronics_sale_product/{{sal.sale.id}}/" class="btn btn-outline-danger" href="" >
+                           <i class="ti-arrow-left" aria-hidden="true"></i>&nbsp;Back</a>
+                    </div>
+          </div>
+   
+
+</div>
+<div class="row">
+   <div class="col-lg-12">
+      <div class="signup-form">
+                 {% if ele_form.non_field_errors %}
+                 <div class="row">
+                   <div class="col-lg-12">
+                           <div class="alert alert-{{message.tags}} alert-dismissible fade show">
+                                   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                   <strong>{{ele_form.non_field_errors}}</strong>
+                                 </div>
+                   </div>
+                   </div>
+                 {% endif %}
+                 
+                 <form action="" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="form_type" value="formEighteen"> 
+                    
+                <h2>Product Details</h2>
+                <p class="hint-text">Update Product Details</p>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-building"></i> </span>
+                    </div>
+                    <select class="form-control custom-select" name="prod">
+                        {% for product in products %}
+                        {% if sal.product.id == product.product.id%}
+                        <option selected value="{{product.product.id}}">{{product.product.name}} ({{product.product.brand}})</option>
+                        {% else %}
+                        <option value="{{product.product.id}}">{{product.product.name}} ({{product.product.brand}})</option>
+                        {% endif %}
+                        {% endfor %}
+                      </select>
+                </div> 
+                <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-money"></i> </span>
+                         </div>
+                         {{ele_form.price}}
+                         {% if ele_form.price.errors %}
+                         <div class="col-lg-12" style="color:red">
+                                 {{ele_form.price.errors}}
+                         </div>
+                         {% endif %}
+                    </div> <!-- form-group// -->
+                  <div class="form-group input-group">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text"> <i class="fa fa-list-ol"></i> </span>
+                       </div>
+                       {{ele_form.quantity}}
+                       {% if ele_form.quantity.errors %}
+                       <div class="col-lg-12" style="color:red">
+                               {{ele_form.quantity.errors}}
+                       </div>
+                       {% endif %}
+                  </div> <!-- form-group// -->
+                 
+                  
+                                                    
+                  <div class="form-group">
+                          <button type="submit" class="button1">Update Product</button>
+                  </div> <!-- form-group// -->  
+                </form>
+      </div>
+        <!--Section: Live preview-->
+  
+      </div>
+      <!--Grid column-->
+  
+    </div>
+    
+{% endblock content %}
+

@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HFM LTD</title>
+    <!-- ================= Favicon ================== -->
+    <!-- Standard -->
+    <!-- Styles -->
+    {% load static %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css" integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
+    <link href="{% static  'css/lib/calendar2/pignose.calendar.min.css' %}" rel="stylesheet">
+    <link href="{% static  'css/lib/data-table/buttons.bootstrap.min.css' %}" rel="stylesheet" />
+    <link href="{% static  'css/lib/chartist/chartist.min.css' %}" rel="stylesheet">
+    <link href="{% static  'css/lib/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static  'css/lib/themify-icons.css' %}" rel="stylesheet">
+    <link href="{% static  'css/lib/owl.carousel.min.css' %}" rel="stylesheet" />
+    <link href="{% static  'css/lib/owl.theme.default.min.css' %}" rel="stylesheet" />
+    <link href="{% static  'css/lib/weather-icons.css' %}" rel="stylesheet" />
+    <link href="{% static  'css/lib/menubar/sidebar.css' %}" rel="stylesheet">
+    <link href="{% static  'css/lib/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static  'css/lib/helper.css' %}" rel="stylesheet">
+    <link href="{% static  'css/style.css' %}" rel="stylesheet">
+   <style>
+     .selection{
+      height: 100px;
+     }
+     .t01 td{
+      border-top : hidden!important
+     }
+.container{
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.t02, .t02 tr, .t02 th, .t02 td{
+  border: 2px solid green
+}
+
+.green{
+    color: green;
+}
+@media (min-width: 1200px)
+{
+ 
+}
+@media print {
+    #myDivToPrint {
+        background-color: white;
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        margin: 0;
+    }
+    @page { margin: 0; }
+  body { margin: 1.6cm; }
+}
+.d-flex{
+  display: flex;
+  flex-direction: row;
+  background: #f6f6f6;
+  border-radius: 0 0 5px 5px;
+  padding: 25px;
+}
+.form1{
+  flex: 4;
+}
+.Yorder{
+  flex: 2;
+}
+.title{
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0, #5195A8), color-stop(100, #70EAFF));
+  background: -moz-linear-gradient(top left, #5195A8 0%, #70EAFF 100%);
+  background: -ms-linear-gradient(top left, #5195A8 0%, #70EAFF 100%);
+  background: -o-linear-gradient(top left, #5195A8 0%, #70EAFF 100%);
+  background: linear-gradient(to bottom right, #5195A8 0%, #70EAFF 100%);
+  border-radius:5px 5px 0 0 ;
+  padding: 20px;
+  color: #f6f6f6;
+}
+
+.required{
+  color: red;
+}
+label, #to1{
+  display: block;
+  margin: 15px;
+}
+label>span{
+  float: left;
+  width: 25%;
+  margin-top: 12px;
+  padding-right: 10px;
+}
+input[type="text"], input[type="tel"], input[type="email"], select
+{
+  width: 70%;
+  height: 30px;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  border: 1px solid #dadada;
+  color: #888;
+}
+select{
+  width: 72%;
+  height: 45px;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+}
+.Yorder{
+  margin-top: 15px;
+  height: 500px;
+  padding: 20px;
+  border: 1px solid #dadada;
+}
+#t01{
+  margin: 0;
+  padding: 0;
+}
+#t01 th{
+  border-bottom: 1px solid #dadada;
+  padding: 10px 0;
+}
+#t01 tr>td:nth-child(1){
+  text-align: left;
+  color: #2d2d2a;
+}
+#t01 tr>td:nth-child(2){
+  text-align: right;
+  color: #52ad9c;
+}
+#t01 td{
+  border-bottom: 1px solid #dadada;
+  padding: 25px 25px 25px 0;
+}
+
+.Yorder>div{
+  padding: 15px 0; 
+}
+
+.button1{
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 30px;
+  background: green;
+  color: #fff;
+  font-size: 15px;
+  font-weight: bold;
+}
+.button1:hover{
+  cursor: pointer;
+  color: #fff;
+  background: #11302c;
+}
+.modal-confirm {		
+	color: #636363;
+	width: 400px;
+}
+.modal-confirm .modal-content {
+	padding: 20px;
+	border-radius: 5px;
+	border: none;
+	text-align: center;
+	font-size: 14px;
+}
+.modal-confirm .modal-header {
+	border-bottom: none;   
+	position: relative;
+}
+.modal-confirm h4 {
+	text-align: center;
+	font-size: 26px;
+	margin: 30px 0 -10px;
+}
+.modal-confirm .close {
+	position: absolute;
+	top: -5px;
+	right: -2px;
+}
+.modal-confirm .modal-body {
+	color: #999;
+}
+.modal-confirm .modal-footer {
+	border: none;
+	text-align: center;		
+	border-radius: 5px;
+	font-size: 13px;
+	padding: 10px 15px 25px;
+}
+.modal-confirm .modal-footer a {
+	color: #999;
+}		
+.modal-confirm .icon-box {
+	width: 80px;
+	height: 80px;
+	margin: 0 auto;
+	border-radius: 50%;
+	z-index: 9;
+	text-align: center;
+	border: 3px solid #f15e5e;
+}
+.modal-confirm .icon-box i {
+	color: #f15e5e;
+	font-size: 46px;
+	display: inline-block;
+	margin-top: 13px;
+}
+.modal-confirm .btn, .modal-confirm .btn:active {
+	color: #fff;
+	border-radius: 4px;
+	background: #60c7c1;
+	text-decoration: none;
+	transition: all 0.4s;
+	line-height: normal;
+	min-width: 120px;
+	border: none;
+	min-height: 40px;
+	border-radius: 3px;
+	margin: 0 5px;
+}
+.modal-confirm .btn-secondary {
+	background: #c1c1c1;
+}
+.modal-confirm .btn-secondary:hover, .modal-confirm .btn-secondary:focus {
+	background: #a8a8a8;
+}
+.modal-confirm .btn-danger {
+	background: #f15e5e;
+}
+.modal-confirm .btn-danger:hover, .modal-confirm .btn-danger:focus {
+	background: #ee3535;
+}
+.trigger-btn {
+	display: inline-block;
+	margin: 100px auto;
+}
+.signup-form {
+	width: 100%;
+	margin: 0 auto;
+	padding: 30px 0;
+  	font-size: 15px;
+}
+.signup-form h2 {
+	color: #636363;
+	margin: 0 0 15px;
+	position: relative;
+	text-align: center;
+}
+.signup-form h2:before, .signup-form h2:after {
+	content: "";
+	height: 2px;
+	width: 30%;
+	background: #d4d4d4;
+	position: absolute;
+	top: 50%;
+	z-index: 2;
+}	
+.signup-form h2:before {
+	left: 0;
+}
+.signup-form h2:after {
+	right: 0;
+}
+.signup-form .hint-text {
+	color: #999;
+	margin-bottom: 30px;
+	text-align: center;
+}
+.signup-form form {
+	color: #999;
+	border-radius: 3px;
+	margin-bottom: 15px;
+	
+	padding: 30px;
+}
+.signup-form .form-group {
+	margin-bottom: 20px;
+}
+.signup-form input[type="checkbox"] {
+	margin-top: 3px;
+}
+.signup-form .btn {        
+	font-size: 16px;
+	font-weight: bold;		
+	min-width: 140px;
+  outline: none !important;
+  background: green;
+  
+}
+.signup-form .row div:first-child {
+	padding-right: 10px;
+}
+.signup-form .row div:last-child {
+	padding-left: 10px;
+}    	
+.signup-form a {
+	color: #fff;
+	text-decoration: underline;
+}
+.signup-form a:hover {
+	text-decoration: none;
+}
+.signup-form form a {
+	background: #1976d2;
+	text-decoration: none;
+}	
+.signup-form form a:hover {
+	text-decoration: underline;
+} 
+.form-control {
+	height: 40px;
+	box-shadow: none;
+	color: #969fa4;
+}
+.form-control:focus {
+	border-color:  #1976d2;
+}
+.form-control, .btn {        
+  border-radius: 3px;
+}
+   </style>
+</head>
+
+<body>
+
+    <div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures">
+        <div class="nano">
+            <div class="nano-content">
+                <ul>
+                    <div class="logo">
+                        <img src="../../static/img/logo4.jpg" width="70%" height="150px" alt="" /></div> 
+                    <li class="label"><a  href="/mobile_home/"><i class="ti-home"></i>Home</a></li>
+                    
+                    <li><a href="/mobile_sale/"><i class="ti-shopping-cart-full"></i> Add Sales </a></li>
+                   
+                    <li><a href="/create_mobile_invoice/"><i class="ti-notepad"></i> Invoice </a></li>
+
+                   <!-- <li><a href="/view_mobile_sales/"><i class="ti-clipboard"></i> View Sales </a></li> -->
+                   </ul>
+            </div>
+        </div>
+    </div>
+  <!-- Button trigger modal-->
+
+<!-- Modal: modalCart -->
+
+<!-- Modal: modalCart -->
+<div class="modal fade" id="modalQuickView2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="row">
+         <div class="col-lg-12">
+            <div class="signup-form">
+                 
+                <form action="/view_mobile_invoice/" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="form_type" value="formTwentyFive"> 
+                <h2>Customer Details</h2>
+                <p class="hint-text">Enter Customer Details</p>
+                <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                         </div>
+                         <input name="cust_name" required class="form-control" placeholder="Customer Name" type="text">
+                    </div> <!-- form-group// -->
+                  <h2>Product Details</h2>
+                <p class="hint-text">Enter product Details</p>
+                  <div class="form-group input-group">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text"> <i class="fa fa-building"></i> </span>
+                      </div>
+                      <select class="form-control custom-select" name="prod">
+                            {% for product in products %}
+                            <option value="{{product.product.id}}">{{product.product.name}} ({{product.product.brand}})</option>
+                            {% endfor %}
+                        </select>
+                  </div> <!-- form-group end.// -->
+    
+                <div class="form-group input-group">
+                  <div class="input-group-prepend">
+                      <span class="input-group-text"> <i class="fa fa-list-ol"></i> </span>
+                  </div>
+                  
+                  <input name="quantity" class="form-control" placeholder="Quantity" type="number" required>
+              </div> <!-- form-group// -->
+             
+                                                      
+                  <div class="form-group">
+                          <button type="submit" class="button1">View Invoice</button>
+                  </div> <!-- form-group// -->  
+                </form>
+            </div>
+              <!--Section: Live preview-->
+        
+            </div>
+            <!--Grid column-->
+        
+          </div>
+          <!--Grid row-->
+        
+         </div>
+        </div>
+      </div>
+  
+</div>
+    <!-- /# sidebar -->
+
+    <div class="header">
+        <div class="container-fluid">
+                {% if messages %}
+                {% for message in messages %}
+                <div class="row">
+                    <div class="col-lg-12">
+                            <div class="alert alert-{{message.tags}} alert-dismissible fade show">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <strong>{{message}}</strong>
+                                  </div>
+                    </div>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="float-left">
+                        <div class="hamburger sidebar-toggle">
+                            <span class="line"></span>
+                            <span class="line"></span>
+                            <span class="line"></span>
+                        </div>
+                    </div>
+                    <div class="float-right">
+                            <div class="dropdown dib">
+                                    <div class="header-icon">
+                                            <a title="Logout"  style="color: red" href="/logout/">
+                                              logout <i class="fa fa-sign-out"></i>
+                                            </a>
+                                        
+                                    </div>
+                                </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="content-wrap">
+        <div class="main">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-8 p-r-0 title-margin-right">
+                        <div class="page-header">
+                            <div class="page-title">
+                                <h1>{{user_name.fname}} {{user_name.lname}}</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /# column -->
+                    <div class="col-lg-4 p-l-0 title-margin-left">
+                        
+                    </div>
+                    <!-- /# column -->
+                </div>
+                <!-- /# row -->
+                <div class="main-content">
+                        <div class="row">
+                          <div class="col-lg-12">
+                            <div class="card">
+                              <div class="card-body">
+                              <!-- jinga syntax here plssssssss  -->
+
+                              {% block content %} 
+
+                              {% endblock%}
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <!-- <div class="col-lg-12">
+                            <div class="footer">
+                              <p>2018 © Admin Board. - <a href="#">example.com</a></p>
+                            </div>
+                          </div> -->
+                        </div>
+                      </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jquery vendor -->
+    <script src="{% static  'js/lib/jquery.min.js' %}"></script>
+    <script src="{% static  'js/lib/jquery.nanoscroller.min.js' %}"></script>
+    <!-- nano scroller -->
+    <script src="{% static  'js/lib/menubar/sidebar.js' %}"></script>
+    <script src="{% static  'js/lib/preloader/pace.min.js' %}"></script>
+    <!-- sidebar -->
+
+    <script src="{% static  'js/lib/bootstrap.min.js' %}"></script>
+    <script src="{% static  'js/scripts.js' %}"></script>
+    <!-- bootstrap -->
+
+    <script src="{% static  'js/lib/calendar-2/moment.latest.min.js' %}"></script>
+    <script src="{% static  'js/lib/calendar-2/pignose.calendar.min.js' %}"></script>
+    <script src="{% static  'js/lib/calendar-2/pignose.init.js' %}"></script>
+
+
+    <script src="{% static  'js/lib/weather/jquery.simpleWeather.min.js' %}"></script>
+    <script src="{% static  'js/lib/weather/weather-init.js' %}"></script>
+    <script src="{% static  'js/lib/circle-progress/circle-progress.min.js' %}"></script>
+    <script src="{% static  'js/lib/circle-progress/circle-progress-init.js' %}"></script>
+    <script src="{% static  'js/lib/chartist/chartist.min.js' %}"></script>
+    <script src="{% static  'js/lib/sparklinechart/jquery.sparkline.min.js' %}"></script>
+    <script src="{% static  'js/lib/sparklinechart/sparkline.init.js' %}"></script>
+    <script src="{% static  'js/lib/owl-carousel/owl.carousel.min.js' %}"></script>
+    <script src="{% static  'js/lib/owl-carousel/owl.carousel-init.js' %}"></script>
+    
+    <!-- scripit init-->
+    <script src="{% static  'js/dashboard2.js' %}"></script>
+    <script src="{% static  'js/lib/data-table/datatables.min.js' %}"></script>
+    <script src="{% static  'js/lib/data-table/dataTables.buttons.min.js' %}"></script>
+    <script src="{% static  'js/lib/data-table/buttons.flash.min.js' %}"></script>
+    <script src="{% static  'js/lib/data-table/jszip.min.js' %}"></script>
+    <script src="{% static  'js/lib/data-table/pdfmake.min.js' %}"></script>
+    <script src="{% static  'js/lib/data-table/vfs_fonts.js' %}"></script>
+    <script src="{% static  'js/lib/data-table/buttons.html5.min.js' %}"></script>
+    <script src="{% static  'js/lib/data-table/buttons.print.min.js' %}"></script>
+    <script src="{% static  'js/lib/data-table/datatables-init.js' %}"></script>
+    <script>
+      $(document).ready(function () {
+      $('#select-state').selectize({
+          sortField: 'text'
+      });
+  });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>    
+  </body>
+
+</html>
